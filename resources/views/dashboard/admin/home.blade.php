@@ -30,14 +30,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ $payment_counts }}</h3>
+                {{-- <h3>{{ $payment_counts }}</h3> --}}
 
                 <p>Payments</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="{{ route('admin.viewallpayment') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="{{ route('admin.viewallpayment') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -45,14 +45,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ $student_counts }}<sup style="font-size: 20px"></sup></h3>
+                {{-- <h3>{{ $student_counts }}<sup style="font-size: 20px"></sup></h3> --}}
 
                 <p>Students</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="{{ route('admin.allstudents') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="{{ route('admin.allstudents') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -60,14 +60,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{ $program_counts }}</h3>
+                {{-- <h3>{{ $program_counts }}</h3> --}}
 
                 <p>Programs </p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="{{ route('admin.viewcourses') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="{{ route('admin.viewcourses') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -75,7 +75,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{ $course_counts }}</h3>
+                {{-- <h3>{{ $course_counts }}</h3> --}}
 
                 <p>Courses</p>
               </div>
@@ -91,13 +91,13 @@
             <!-- small box -->
             <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>{{ $lecturer_counts }}</h3>
+                {{-- <h3>{{ $lecturer_counts }}</h3> --}}
                 <p>Lecturers</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="{{ route('admin.lecturers') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="{{ route('admin.lecturers') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -107,13 +107,13 @@
             <!-- small box -->
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3>{{ $resultcert_counts }}</h3>
+                {{-- <h3>{{ $resultcert_counts }}</h3> --}}
                 <p>Cert  Results</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="{{ route('admin.resultforcertindata') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="{{ route('admin.resultforcertindata') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -122,13 +122,13 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ $diploma_counts }}</h3>
+                {{-- <h3>{{ $diploma_counts }}</h3> --}}
                 <p>Diploma Results</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person"></i>
               </div>
-              <a href="{{ route('admin.resultford1') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              {{-- <a href="{{ route('admin.resultford1') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
 
@@ -137,7 +137,7 @@
             <!-- small box -->
             <div class="small-box bg-default">
               <div class="inner">
-                <h3>{{ $registeredcourses_counts }}</h3>
+                {{-- <h3>{{ $registeredcourses_counts }}</h3> --}}
                 <p>Courses Registered</p>
               </div>
               <div class="icon">
@@ -232,7 +232,7 @@
                   <div class="card-header">
                     <h3 class="card-title">Latest Lecturers</h3>
                     <div class="card-tools">
-                      <span class="badge badge-danger">{{ $lecturer_counts }} New Lecturers</span>
+                      {{-- <span class="badge badge-danger">{{ $lecturer_counts }} New Lecturers</span> --}}
                       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                       </button>
                       <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
@@ -241,25 +241,25 @@
                   </div>
                   <!-- /.card-header -->
                  
-                  <div class="card-body p-0">
+                  {{-- <div class="card-body p-0">
                     <ul class="users-list clearfix">
                       @foreach ($view_lecturers as $view_lecturer)
                         @if ($view_lecturer->status = 'approved')
                           <li>
                            <a href="viewsinglelecturer/{{ $view_lecturer->ref_no }}"> <img style="width: 128px; height: 128px;" src="{{ URL::asset("/public/../$view_lecturer->images")}}" alt="User Image"></a>
                             <a class="users-list-name" href="viewsinglelecturer/{{ $view_lecturer->ref_no }}">{{ $view_lecturer->fname }} {{ $view_lecturer->lname }}</a>
-                            {{-- <span class="users-list-date">Today</span> --}}
+                            <span class="users-list-date">Today</span>
                           </li>
                         @else
                         
                       @endif
                     @endforeach
                   </ul>
-                  </div>
+                  </div> --}}
                   
                   <!-- /.card-body -->
                   <div class="card-footer text-center">
-                    <a href="{{ route('admin.lecturers') }}">View All Users</a>
+                    {{-- <a href="{{ route('admin.lecturers') }}">View All Users</a> --}}
                   </div>
                   <!-- /.card-footer -->
                 </div>
@@ -302,7 +302,7 @@
                       </tr>
                       </thead>
                       <tbody>
-                        @foreach ($view_students as $view_student)
+                        {{-- @foreach ($view_students as $view_student)
                         <tr>
                           <td><a href="viewstudents/{{ $view_student->ref_no }}">{{ $view_student->ref_no }}</a></td>
                           <td>{{ $view_student->surname }}</td>
@@ -323,13 +323,13 @@
                         </tr>
                         @endforeach
                       </tbody>
-                    </table>
+                    </table> --}}
                   </div>
                   <!-- /.table-responsive -->
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                  <a href="{{ route('admin.allstudents') }}" class="btn btn-sm btn-info float-left">View All Student</a>
+                  {{-- <a href="{{ route('admin.allstudents') }}" class="btn btn-sm btn-info float-left">View All Student</a> --}}
                   {{-- <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a> --}}
                 </div>
                 <!-- /.card-footer -->
@@ -368,7 +368,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                      @foreach ($view_payments as $view_payment)
+                      {{-- @foreach ($view_payments as $view_payment)
                       <tr>
                         <td><a href="viewsinglepayment/{{ $view_payment->id }}">View Payment of {{ $view_payment->student['surname'] }}</a></td>
                         <td><a href="viewstudents/{{ $view_payment->student['ref_no'] }}">{{ $view_payment->student['fname'] }}</a></td>
@@ -389,14 +389,14 @@
 
                       </tr>
                       @endforeach
-                    </tbody>
+                    </tbody> --}}
                   </table>
                 </div>
                 <!-- /.table-responsive -->
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <a href="{{ route('admin.viewallpayment') }}" class="btn btn-sm btn-info float-left">View All Payment</a>
+                {{-- <a href="{{ route('admin.viewallpayment') }}" class="btn btn-sm btn-info float-left">View All Payment</a> --}}
                 {{-- <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a> --}}
               </div>
               <!-- /.card-footer -->
@@ -469,7 +469,7 @@
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <ul class="products-list product-list-in-card pl-2 pr-2">
-                  @foreach ($view_results as $view_result)
+                  {{-- @foreach ($view_results as $view_result)
                   <li class="item">
                     <a href="viewresults/{{ $view_result->id }}" class="btn btn-info">View
                      </a>
@@ -481,7 +481,7 @@
                       </span>
                     </div>
                   </li>
-                  @endforeach
+                  @endforeach --}}
                 </ul>
               </div>
             </div>
@@ -506,7 +506,7 @@
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <ul class="products-list product-list-in-card pl-2 pr-2">
-                  @foreach ($student_sums as $student_sum)
+                  {{-- @foreach ($student_sums as $student_sum)
                   <li class="item">
                     <a href="viewstudents/{{ $student_sum->ref_no }}" class="btn btn-info">View 
                      </a>
@@ -522,7 +522,7 @@
                     </div>
                   </li>
                   @endforeach
-                </ul>
+                </ul> --}}
               </div>
             </div>
             <!-- /.card -->

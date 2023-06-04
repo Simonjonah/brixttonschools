@@ -22,7 +22,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href="/"><b>IMFI </b>Admin</a>
+    <a href="/"><b>Brixtonn </b>Admin</a>
   </div>
 
   <div class="card">
@@ -70,7 +70,31 @@
         </div>
         @error('email')
             <span class="text-danger">{{ $message }}</span>
+          @enderror
+          <div class="input-group mb-3">
+            <input type="number" name="phone" class="form-control"  @error('phone') is-invalid @enderror"
+            value="{{ old('phone') }}" placeholder="Phone Number">
+            
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-phone"></span>
+              </div>
+            </div>
+          </div>
+          @error('phone')
+              <span class="text-danger">{{ $message }}</span>
             @enderror
+
+            <div class="input-group mb-3">
+              <select name="studycenter" class="form-control" id="">
+                  <option value="Uyo">Uyo Study Centre</option>
+                  <option value="Abuja">Abuja Study Centre</option>
+              </select>
+            </div>
+            @error('password')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror 
+
         <div class="input-group mb-3">
           <input type="password" name="password" class="form-control"  @error('password') is-invalid @enderror"
           value="{{ old('password') }}" placeholder="password">
@@ -100,7 +124,7 @@
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+              <input type="checkbox" id="agreeTerms" name="agree" required value="agree">
               <label for="agreeTerms">
                I agree to the <a href="#">terms</a>
               </label>

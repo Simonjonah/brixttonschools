@@ -558,6 +558,34 @@
             </ul>
           </li>
           
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Roles
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <li class="nav-item">
+                  <a href="{{ route('admin.addrole') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Role</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="{{ route('admin.nidschfees') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View NID Fees</p>
+                  </a>
+                </li>
+              </li>
+            </ul>
+          </li>
+
+
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
@@ -576,6 +604,8 @@
            
             </ul>
           </li>
+
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
