@@ -31,7 +31,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form action="{{ url('admin/updateblog/'.$edit_blogs->ref_no) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('admin/updategallery/'.$edit_gallery->id) }}" method="post" enctype="multipart/form-data">
                   @csrf
                   @if (Session::get('success'))
                   <div class="alert alert-success">
@@ -50,7 +50,7 @@
                       <div class="form-group">
                         <label> Title</label>
                         <input type="text" class="form-control" @error('title')
-                        @enderror value="{{ $edit_blogs->title }}" name="title" placeholder="Title">
+                        @enderror value="{{ $edit_gallery->title }}" name="title" placeholder="Title">
                       </div>
                     </div>
                     @error('title')
@@ -61,7 +61,7 @@
                       <div class="form-group">
                         <label> Image</label>
                         <img style="width: 50%; height: 50%;" class="profile-user-img img-fluid"
-                            src="{{ URL::asset("/public/../$edit_blogs->images")}}"
+                            src="{{ URL::asset("/public/../$edit_gallery->images")}}"
                             alt="User profile picture">
                         <input type="file" @error('images')
                         @enderror value="{{ old('images') }}" class="form-control" name="images"> 
@@ -74,7 +74,7 @@
                      
                     <div class="col-sm-6">
                        <textarea class="textarea" name="messages" class="form-control" @error('messages') is-invalid @enderror" placeholder="Place some text here"
-                      value="{{ $edit_blogs->messages }}     style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $edit_blogs->messages }}</textarea>
+                      value="{{ $edit_gallery->messages }}     style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $edit_gallery->messages }}</textarea>
                      </div>
                       @error('message')
                       <span class="text-danger">{{ $message }}</span>

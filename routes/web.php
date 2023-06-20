@@ -152,6 +152,7 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::post('/createtgallery', [GalleryController::class, 'createtgallery'])->name('createtgallery');
         Route::get('/viewgallery', [GalleryController::class, 'viewgallery'])->name('viewgallery');
         Route::get('/galleryedit/{id}', [GalleryController::class, 'galleryedit'])->name('galleryedit');
+        Route::put('/updategallery/{id}', [GalleryController::class, 'updategallery'])->name('updategallery');
         
         Route::get('/addcources', [CourseController::class, 'addcources'])->name('addcources');
         Route::get('/addnidnetcoursesl1stsem', [RegistercourseController::class, 'addnidnetcoursesl1stsem'])->name('addnidnetcoursesl1stsem');

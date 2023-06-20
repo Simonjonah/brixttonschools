@@ -41,6 +41,32 @@ class GalleryController extends Controller
         $edit_gallery = Gallery::where('id', $id)->first();
         return view('dashboard.admin.galleryedit', compact('edit_gallery'));
     }
+
+
+    public function updategallery(Request $request, $id){
+        $edit_gallery = Gallery::where('id', $id)->first();
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'messages' => ['required', 'string', 'max:255'],
+            'images' => 'nullable|mimes:jpg,png,jpeg'
+        ]);
+      
+        if ($request->hasFile('images')){
+
+            $file = $request['images'];
+            $filename = 'SimonJonah-' . time() . '.' . $file->getClientOriginalExtension();
+            $path = $request->file('images')->storeAs('resourceimages', $filename);
+
+        }
+        $edit_gallery['images'] = $path;
+        $edit_gallery->title = $request->title;
+        $edit_gallery->messages = $request->messages;
+        $edit_gallery->update();
+
+        return redirect()->back()->with('success', 'you have added successfully');
+
+    }
     
 
     

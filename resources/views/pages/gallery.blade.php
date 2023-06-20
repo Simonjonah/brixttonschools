@@ -65,7 +65,7 @@
                 	
 					
 
-                    <li><div class="image-box"><a href="#"><img style="width: 100%; height: 150px;" src="images" alt=""></a></div></li>
+                    <li><div class="image-box"><a href="#"><img style="width: 100%; height: 150px;" src="{{ URL::asset("/public/../$edit_gallery->images")}}" alt=""></a></div></li>
                
 					
 					
