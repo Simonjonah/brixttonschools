@@ -51,14 +51,7 @@ class Admin extends Authenticatable
     ];
 
 
-    public function referrer(){
-        return $this->belongsTo(User::class, 'referrer_id', 'id');
-    }
-
-    public function referrals()
-{
-    return $this->hasMany(User::class, 'referrer_id', 'id');
-}
+    
 
 
 
@@ -82,9 +75,10 @@ public function getReferralLinkAttribute()
     return $this->referral_link = route('register', ['ref' => $this->username]);
 }
 
-public function marketer() {
-    return $this->belongsTo(Marketer::class, 'marketer_id', 'id');
-}
+public function roles() 
+    {
+        return $this->hasMany(Role::class);
+    }
 
 
 }

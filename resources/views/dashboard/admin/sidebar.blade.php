@@ -4,7 +4,7 @@
     <a href="{{ route('admin.home') }}" class="brand-link">
       <img src="{{ asset('assets/dist/img/AdminLTELogo.jpg') }}" alt="AdminLTE Logo" class="brand-image "
            style="opacity: .8">
-      <span class="brand-text font-weight-light"> IMFI ICT </span>
+      <span class="brand-text font-weight-light"><br>BRIXTONN  SCHOOLS </span>
     </a>
 
     <!-- Sidebar -->
@@ -12,7 +12,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('assets/dist/img/AdminLTELogo.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('/public/../'.Auth::guard('admin')->user()->images)}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="{{ route('admin.profile') }}" class="d-block">{{ Auth::guard('admin')->user()->name }}</a>
@@ -55,23 +55,50 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Add NID Sch.Fees 200L
+                Add Center
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <li class="nav-item">
-                  <a href="{{ route('admin.addnidschoolfees') }}" class="nav-link">
+                  <a href="{{ route('admin.studycenter') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add Fees</p>
+                    <p>Add Study Center</p>
                   </a>
                 </li>
 
                 <li class="nav-item">
-                  <a href="{{ route('admin.nidschfees') }}" class="nav-link">
+                  <a href="{{ route('admin.studycentertables') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>View NID Fees</p>
+                    <p>View Study center</p>
+                  </a>
+                </li>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Assets
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <li class="nav-item">
+                  <a href="{{ route('admin.addgallery') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Gallery</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="{{ route('admin.viewgallery') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Gallery</p>
                   </a>
                 </li>
               </li>
@@ -516,6 +543,20 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="{{ route('admin.addblog') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Press Releasse</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.viewblog') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Press Releasse</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="{{ route('admin.addtestimony') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -543,13 +584,13 @@
               </li>
 
               <li class="nav-item">
-                <a href="{{ route('admin.addevent') }}" class="nav-link">
+                <a href="{{ route('admin.addteam') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Team</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.viewevents') }}" class="nav-link">
+                <a href="{{ route('admin.viewteam') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>View Team</p>
                 </a>
@@ -576,9 +617,9 @@
                 </li>
 
                 <li class="nav-item">
-                  <a href="{{ route('admin.nidschfees') }}" class="nav-link">
+                  <a href="{{ route('admin.viewroles') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>View NID Fees</p>
+                    <p>View Role</p>
                   </a>
                 </li>
               </li>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Publication;
-use App\Models\Resource;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +18,8 @@ class AdminController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'studycenter' => ['required', 'string', 'max:255'],
             'agree' => ['required', 'string', 'max:255'],
+            'designation' => ['required', 'string', 'max:255'],
+            
             'phone' => ['required', 'string', 'max:255', 'unique:admins'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
             'password' => ['required', 'string', 'min:8'],
@@ -26,9 +28,10 @@ class AdminController extends Controller
         ]);
         $registration = new Admin();
         $registration->name = $request->name;
-       $registration->role = 1;
+       $registration->role = 0;
        $registration->agree = $request->agree;
         $registration->phone = $request->phone;
+        $registration->designation = $request->designation;
         $registration->studycenter = $request->studycenter;
         $registration->email = $request->email;
         $registration->password = \Hash::make($request->password);
@@ -42,10 +45,7 @@ class AdminController extends Controller
         }
     }
 
-    public function addrole(){
-
-        return view('dashboard.admin.addrole');
-    }
+    
 
     public function check(Request $request){
         $request->validate([
@@ -77,26 +77,34 @@ class AdminController extends Controller
         $edit_profiles = Admin::where('id', $id)->first();
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string'],
+            'designation' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+
             'phone' => ['required', 'string'],
             'address' => ['required', 'string'],
             'studycenter' => ['required', 'string'],
-            'profileimage' => 'nullable|mimes:jpg,png,jpeg'
+            'images' => 'nullable|mimes:jpg,png,jpeg'
         ]);
-        if ($request->hasFile('profileimage')){
+        
+        if ($request->hasFile('images')){
 
-            $file = $request['profileimage'];
+            $file = $request['images'];
             $filename = 'SimonJonah-' . time() . '.' . $file->getClientOriginalExtension();
-            $path = $request->file('profileimage')->storeAs('resourceimages', $filename);
+            $path = $request->file('images')->storeAs('resourceimages', $filename);
 
         }
-        $edit_profiles['profileimage'] = $path;
+        $edit_profiles['images'] = $path;
         $edit_profiles->name = $request->name;
-        $edit_profiles->lastname = $request->lastname;
+        $edit_profiles->email = $request->email;
         $edit_profiles->address = $request->address;
         $edit_profiles->phone = $request->phone;
+        $edit_profiles->studycenter = $request->studycenter;
+        $edit_profiles->designation = $request->designation;
+
+
         $edit_profiles->update();
-        return redirect('admin/addcourse')->with('you have update successfully');
+
+        return redirect()->back()->with('success', 'you have update successfully');
 
     }
 

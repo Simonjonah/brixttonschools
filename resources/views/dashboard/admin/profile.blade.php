@@ -30,7 +30,7 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img style="width: 100%; height: 200px;" class="profile-user-img img-fluid"
-                       src="{{ asset('/public/../'.Auth::guard('admin')->user()->profileimage)}}"
+                       src="{{ asset('/public/../'.Auth::guard('admin')->user()->images)}}"
                        alt="User profile picture">
                 </div>
 
@@ -40,10 +40,10 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Publications</b> <a class="float-right">555</a>
+                    <b>Designation</b> <a class="float-right">{{ Auth::guard('admin')->user()->designation }}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Resources</b> <a class="float-right">77</a>
+                    <b>Branch </b> <a class="float-right">{{ Auth::guard('admin')->user()->studycenter }}</a>
                   </li>
                   <li class="list-group-item">
                     <b>Contacts</b> <a class="float-right">13,287</a>
@@ -58,41 +58,7 @@
 
             <!-- About Me Box -->
             <div class="card card-primary">
-              {{-- <div class="card-header">
-                <h3 class="card-title">About Me</h3>
-              </div> --}}
-              <!-- /.card-header -->
-              {{-- <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i> Education</strong>
-
-                <p class="text-muted">
-                  B.S. in Computer Science from the University of Tennessee at Knoxville
-                </p>
-
-                <hr>
-
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                <p class="text-muted">Malibu, California</p>
-
-                <hr>
-
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong> --}}
-
-                {{-- <p class="text-muted">
-                  <span class="tag tag-danger">UI Design</span>
-                  <span class="tag tag-success">Coding</span>
-                  <span class="tag tag-info">Javascript</span>
-                  <span class="tag tag-warning">PHP</span>
-                  <span class="tag tag-primary">Node.js</span>
-                </p> --}}
-
-                {{-- <hr>
-
-                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-              </div> --}}
+             
               
               <!-- /.card-body -->
             </div>
@@ -195,7 +161,17 @@
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal" action="{{ url('admin/settingsupdate/'.Auth::guard('admin')->user()->id) }}" method="post" enctype="multipart/form-data">
                       @csrf
-                      
+                      @if (Session::get('success'))
+                        <div class="alert alert-success">
+                            {{ Session::get('success') }}
+                        </div>
+                        @endif
+
+                        @if (Session::get('fail'))
+                        <div class="alert alert-danger">
+                        {{ Session::get('fail') }}
+                        </div>
+                    @endif
                       @method('PUT')
 
                       <div class="form-group row">
@@ -207,27 +183,34 @@
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label"> Last Name</label>
                         <div class="col-sm-10">
-                          <input type="text" name="lastname" value="{{ Auth::guard('admin')->user()->lastname }}" class="form-control" id="inputName" placeholder="Last Name">
+                          <input type="text" name="designation" value="{{ Auth::guard('admin')->user()->designation }}" class="form-control" id="inputName" placeholder="Designation">
                         </div>
                       </div>
-                      <div class="form-group row">
+                     <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
                           <input type="email" name="email" value="{{ Auth::guard('admin')->user()->email }}" class="form-control" id="inputEmail" placeholder="Email">
                         </div>
                       </div>
-                      <div class="form-group row">
+                       <div class="form-group row">
                         <label for="inputName2" value="{{ Auth::guard('admin')->user()->address }}" class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control" value="{{ Auth::guard('admin')->user()->address }}" name="address" id="inputName2" placeholder="Address">
                         </div>
                       </div>
-                      <img class="image rounded-circle" src="{{ asset('/public/../'.Auth::guard('admin')->user()->profileimage)}}" alt="profile_image" style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
 
                       <div class="form-group row">
-                        <label for="inputName2" value="{{ Auth::guard('admin')->user()->profileimage }}" class="col-sm-2 col-form-label">Picture</label>
+                        <label for="inputName2" value="{{ Auth::guard('admin')->user()->studycenter }}" class="col-sm-2 col-form-label">Study Center</label>
                         <div class="col-sm-10">
-                          <input type="file" class="form-control" name="profileimage" id="inputName2" placeholder="profileimage">
+                          <input type="text" class="form-control" value="{{ Auth::guard('admin')->user()->studycenter }}" name="studycenter" id="inputName2" placeholder="study center">
+                        </div>
+                      </div>
+                      <img class="image rounded-circle" src="{{ asset('/public/../'.Auth::guard('admin')->user()->images)}}" alt="profile_image" style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
+
+                      <div class="form-group row">
+                        <label for="inputName2" value="{{ Auth::guard('admin')->user()->images }}" class="col-sm-2 col-form-label">Picture</label>
+                        <div class="col-sm-10">
+                          <input type="file" class="form-control" name="images" id="images" placeholder="profileimage">
                         </div>
                       </div>
                       {{-- <div class="form-group row">
@@ -272,3 +255,21 @@
     </section>
  </div>
     @include('dashboard.admin.footer')
+
+    {{-- <script>
+      $('#images').ijaboCropTool({
+         preview : '.image-previewer',
+         setRatio:1,
+         allowedExtensions: ['jpg', 'jpeg','png'],
+         buttonsText:['CROP','QUIT'],
+         buttonsColor:['#30bf7d','#ee5155', -15],
+         processUrl:'{{ url('admin/settingsupdate/'.Auth::guard('admin')->user()->id) }}',
+         withCSRF:['_token','{{ csrf_token() }}'],
+         onSuccess:function(message, element, status){
+            alert(message);
+         },
+         onError:function(message, element, status){
+           alert(message);
+         }
+      });
+ </script> --}}

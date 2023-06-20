@@ -22,7 +22,7 @@
 		<div class="auto-container">
 			<div class="inner-container">
 				<h2 style="color: red; text-align: center; margin-bottom: 15px;">CONTACT BRIXTONN SCHOOLS </span></h2>
-				<h4 style="color: purple; text-align: center; margin-bottom: 15px;">EARLY LEARNING CENTRE </span></h4>
+				{{-- <h4 style="color: purple; text-align: center; margin-bottom: 15px;">EARLY LEARNING CENTRE </span></h4> --}}
 				<div class="row clearfix">
 
 					<!-- Info Column -->
@@ -30,9 +30,9 @@
 						<div class="inner-column">
 							<div class="text">For additioan information on BRIXTONN SCHOOLS services. Please contact using the information below</div>
 							<ul class="list-style-five">
-								<li><span class="icon fa fa-building"></span>30 Ewet Housing Estate, Uyo Akwa Ibom State, Nigeria.</li>
+								<li><span class="icon fa fa-building"></span>Unit 13 F-Line, Ewet Housing Estate, Uyo Akwa Ibom State, Nigeria.</li>
 								<li><span class="icon fa fa-fax"></span> +234 808 908 0898</li>
-								<li><span class="icon fa fa-envelope-o"></span>info@nciuyo.com</li>
+								<li><span class="icon fa fa-envelope-o"></span>info@brixtonn.com.ng</li>
 							</ul>
 						</div>
 					</div>

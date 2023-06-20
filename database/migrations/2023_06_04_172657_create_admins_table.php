@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('agree')->nullable();
             $table->string('role')->nullable();
+            $table->string('designation')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

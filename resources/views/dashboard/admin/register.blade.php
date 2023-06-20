@@ -84,13 +84,27 @@
           @error('phone')
               <span class="text-danger">{{ $message }}</span>
             @enderror
-
+            <div class="input-group mb-3">
+              <input type="text" required name="designation" class="form-control"  @error('designation') is-invalid @enderror"
+              value="{{ old('designation') }}" placeholder="Designation ">
+              
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            @error('designation')
+                <span class="text-danger">{{ $message }}</span>
+              @enderror
             <div class="input-group mb-3">
               <select name="studycenter" class="form-control" id="">
                   <option value="Uyo">Uyo Study Centre</option>
                   <option value="Abuja">Abuja Study Centre</option>
               </select>
             </div>
+
+
             @error('password')
                 <span class="text-danger">{{ $message }}</span>
             @enderror 

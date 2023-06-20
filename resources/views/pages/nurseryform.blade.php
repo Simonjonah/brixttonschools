@@ -11,7 +11,7 @@
 		}
 	</style>
 	<!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/bri2.jpg)">
+    {{-- <section class="page-title" style="background-image:url(images/background/bri2.jpg)">
     	<div class="auto-container">
 			<div class="content">
 				<h1>Nursery <span>Form</span></h1>
@@ -21,17 +21,17 @@
 				</ul>
 			</div>
         </div>
-    </section>
+    </section> --}}
     
 	<!-- Contact Page Section -->
 	<section class="contact-page-section" style="margin-bottom: 30px;">
 		<div class="auto-container">
 			<div class="inner-container">
 				<div class="sec-title centered">
-				<h2>NIGERIAN CHRISTIAN INSTITUTE <br>EARLY LEARNING CENTRE</h2>
+				<h2>BRIXTOON SCHOOLS </h2>
 
-				<h5 style="color: #000">30 BABANGIDA AVENUE, P.M.B. 1096</h5>
-				<span><img style="width: 90px; " src="images/sch14.jpg"></a></span>
+				<h5 style="color: #000">Unit 13 F-Line, Ewet Housing Estate</h5>
+				<span><img style="width: 200px; " src="images/sch14.jpg"></a></span>
 			</div>
 					<h4>REGISTRATION FORM</h4>
 					<P>Please fill and return in a file to the Head Teacher's office at the above Address</P>

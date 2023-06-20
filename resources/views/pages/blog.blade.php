@@ -25,27 +25,26 @@
 			
 
 
-
+				@foreach ($view_blogs as $view_blog)
 				<!-- News Block Three -->
 				<div class="news-block-three col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<a href="press_single/view?id=">
-                    		<img style="width: 1000px; height: 200px;" src="images/" alt=""></a></h2></span>
+							<a href="{{ url('singleblog/'.$view_blog->ref_no) }}">
+                    		<img style="width: 1000px; height: 250px;" src="{{ URL::asset("/public/../$view_blog->images")}}" alt=""></a></h2></span>
 							
 						</div>
 						<div class="lower-content">
 							<ul class="post-meta">
-								<li><span class="fa fa-calendar"></span>date</li>
-								<li><span class="fa fa-user"></span>role Admin</li>
+								<li><span class="fa fa-calendar"></span>{{ $view_blog->created_at->format('h:i:s a m/d/y') }}</li>
+								<li><span class="fa fa-user"></span></li>
 							</ul>
-							<!-- <h4><?php //echo $press_releases['topic']; ?></h4> -->
-							<h4><a href="press_single/view?id=">topic</a></h4>
+							<h4><a href="{{ url('singleblog/'.$view_blog->ref_no) }}">{{ $view_blog->title }}</a></h4>
 						</div>
 					</div>
 				</div>
-			
-				
+
+			@endforeach
 
 
 			
@@ -63,7 +62,7 @@
 					<h2>Request for <span> Call back</span></h2>
 				</div>
 				<div class="pull-right">
-					<a href="contact" class="theme-btn btn-style-five">Request now <span class="icon fa fa-arrow-right"></span></a>
+					<a href="{{ url('contact') }}" class="theme-btn btn-style-five">Request now <span class="icon fa fa-arrow-right"></span></a>
 				</div>
 				
 			</div>

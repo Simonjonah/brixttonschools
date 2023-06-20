@@ -3,7 +3,20 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
-/*
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\StudycenterController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GalleryController;
+
+use App\Models\Team;
+use App\Models\Event;
+use App\Models\Blog;
+
+
+/*TeamController
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -15,7 +28,17 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $view_teams = Team::where('status', 'approved')->get();
+    $view_events = Event::latest()->where('status', 'approved')->get();
+    $view_blogs = Blog::latest()->where('status', 'approved')->get();
+
+    return view('welcome', compact('view_teams', 'view_events', 'view_blogs'));
+});
+
+Route::get('/ourevents', function () {
+    $viewour_events = Event::latest()->where('status', 'approved')->get();
+    return view('pages.ourevents', compact('viewour_events'));
 });
 Route::get('/about', function () {
     return view('pages.about');
@@ -23,7 +46,8 @@ Route::get('/about', function () {
 
 
 Route::get('/team', function () {
-    return view('pages.team');
+    $view_teams = Team::where('status', 'approved')->get();
+    return view('pages.team',  compact('view_teams'));
 });
 
 Route::get('/clubs', function () {
@@ -45,7 +69,8 @@ Route::get('/academics', function () {
 });
 
 Route::get('/blog', function () {
-    return view('pages.blog');
+    $view_blogs = Blog::latest()->where('status', 'approved')->get();
+    return view('pages.blog', compact('view_blogs'));
 });
 
 
@@ -59,6 +84,17 @@ Route::get('/facilities', function () {
     return view('pages.facilities');
 });
 
+Route::get('/teacherform', function () {
+
+    return view('pages.teacherform');
+});
+
+
+Route::post('/createteacher', [UserController::class, 'createteacher'])->name('createteacher');
+Route::get('/viewsingleevent/{ref_no}', [EventController::class, 'viewsingleevent'])->name('viewsingleevent');
+Route::get('/viewsinglemember/{ref_no}', [TeamController::class, 'viewsinglemember'])->name('viewsinglemember');
+
+Route::get('/singleblog/{ref_no}', [BlogController::class, 'singleblog'])->name('singleblog');
 
 Route::prefix('admin')->name('admin.')->group(function() {
 
@@ -72,7 +108,51 @@ Route::prefix('admin')->name('admin.')->group(function() {
     });
     
     Route::middleware(['auth:admin'])->group(function() {
-        Route::get('/addrole', [AdminController::class, 'addrole'])->name('addrole');
+        
+        Route::get('/studycenter', [StudycenterController::class, 'studycenter'])->name('studycenter');
+        Route::post('/createstudycenter', [StudycenterController::class, 'createstudycenter'])->name('createstudycenter');
+        Route::get('/studycentertables', [StudycenterController::class, 'studycentertables'])->name('studycentertables');
+        Route::get('/studycentapproved/{id}', [StudycenterController::class, 'studycentapproved'])->name('studycentapproved');
+        Route::get('/studycentsuspend/{id}', [StudycenterController::class, 'studycentsuspend'])->name('studycentsuspend');
+        Route::get('/studycentdelete/{id}', [StudycenterController::class, 'studycentdelete'])->name('studycentdelete');
+        Route::post('/createam', [TeamController::class, 'createam'])->name('createam');
+        Route::get('/addteam', [TeamController::class, 'addteam'])->name('addteam');
+        Route::get('/viewteam', [TeamController::class, 'viewteam'])->name('viewteam');
+        Route::get('/viewsingteam/{ref_no}', [TeamController::class, 'viewsingteam'])->name('viewsingteam');
+        Route::get('/editteam/{id}', [TeamController::class, 'editteam'])->name('editteam');
+        Route::put('/updateteam/{id}', [TeamController::class, 'updateteam'])->name('updateteam');
+        Route::get('/teamsuspend/{ref_no}', [TeamController::class, 'teamsuspend'])->name('teamsuspend');
+        Route::get('/teamapproved/{ref_no}', [TeamController::class, 'teamapproved'])->name('teamapproved');
+        Route::get('/teamsacked/{ref_no}', [TeamController::class, 'teamsacked'])->name('teamsacked');
+        Route::get('/staffdelete/{ref_no}', [TeamController::class, 'staffdelete'])->name('staffdelete');
+         
+        Route::post('/createrol', [RoleController::class, 'createrol'])->name('createrol');
+        Route::get('/addrole', [RoleController::class, 'addrole'])->name('addrole');
+        Route::get('/viewroles', [RoleController::class, 'viewroles'])->name('viewroles');
+        Route::get('/addevent', [EventController::class, 'addevent'])->name('addevent');
+        Route::get('/createteevent', [EventController::class, 'createteevent'])->name('createteevent');
+        Route::get('/viewevents', [EventController::class, 'viewevents'])->name('viewevents');
+        Route::get('/eventview/{ref_no}', [EventController::class, 'eventview'])->name('eventview');
+        Route::get('/eventedit/{ref_no}', [EventController::class, 'eventedit'])->name('eventedit');
+        Route::put('/updateevent/{ref_no}', [EventController::class, 'updateevent'])->name('updateevent');
+        Route::get('/eventeapproved/{ref_no}', [EventController::class, 'eventeapproved'])->name('eventeapproved');
+        Route::get('/eventesuspend/{ref_no}', [EventController::class, 'eventesuspend'])->name('eventesuspend');
+        Route::get('/eventedelete/{ref_no}', [EventController::class, 'eventedelete'])->name('eventedelete');
+        Route::get('/eventedelete/{ref_no}', [EventController::class, 'eventedelete'])->name('eventedelete');
+        Route::get('/addblog', [BlogController::class, 'addblog'])->name('addblog');
+        Route::get('/viewblog', [BlogController::class, 'viewblog'])->name('viewblog');
+        Route::post('/createblog', [BlogController::class, 'createblog'])->name('createblog');
+        Route::get('/blogview/{ref_no}', [BlogController::class, 'blogview'])->name('blogview');
+        Route::get('/blogedit/{ref_no}', [BlogController::class, 'blogedit'])->name('blogedit');
+        Route::put('/updateblog/{ref_no}', [BlogController::class, 'updateblog'])->name('updateblog');
+        Route::get('/blogeapproved/{ref_no}', [BlogController::class, 'blogeapproved'])->name('blogeapproved');
+        Route::get('/blogesuspend/{ref_no}', [BlogController::class, 'blogesuspend'])->name('blogesuspend');
+        Route::get('/blogedelete/{ref_no}', [BlogController::class, 'blogedelete'])->name('blogedelete');
+        Route::get('/addgallery', [GalleryController::class, 'addgallery'])->name('addgallery');
+        Route::post('/createtgallery', [GalleryController::class, 'createtgallery'])->name('createtgallery');
+        Route::get('/viewgallery', [GalleryController::class, 'viewgallery'])->name('viewgallery');
+        Route::get('/galleryedit/{id}', [GalleryController::class, 'galleryedit'])->name('galleryedit');
+        
         Route::get('/addcources', [CourseController::class, 'addcources'])->name('addcources');
         Route::get('/addnidnetcoursesl1stsem', [RegistercourseController::class, 'addnidnetcoursesl1stsem'])->name('addnidnetcoursesl1stsem');
         Route::get('/viewnetworkcourses', [RegistercourseController::class, 'viewnetworkcourses'])->name('viewnetworkcourses');

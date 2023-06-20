@@ -95,13 +95,15 @@
 									<li class="dropdown"><a href="#">Admission</a>
 										<ul>
 											<li><a href="{{ url('nurseryform') }}">Nursery/Primary</a></li>
-	<!-- 										<li><a href="secondaryform">Secondary</a></li> -->
+											<li><a href="{{ url('secondaryform') }}">Secondary</a></li> 
 											
 										</ul>
 									</li>
 									<li class="dropdown"><a href="#">Press Release</a>
 										<ul>
 											<li><a href="{{ url('blog') }}">Our Press</a></li>
+											<li><a href="{{ url('ourevents') }}">Our Events</a></li>
+
 										</ul>
 									</li>
 									<li class="dropdown"><a href="#">Academics</a>
@@ -198,12 +200,13 @@
 								<li class="dropdown"><a href="#">Admission</a>
 									<ul>
 										<li><a href="{{ url('nurseryform') }}">Nursery/Primary</a></li>
-<!-- 										<li><a href="secondaryform">Secondary</a></li> -->
+									<li><a href="{{ url('secondaryform') }}">Secondary</a></li> 
 									</ul>
 								</li>
 								<li class="dropdown"><a href="#">Press Release</a>
 									<ul>
 										<li><a href="{{ url('blog') }}">Our Press</a></li>
+										<li><a href="{{ url('ourevents') }}">Our Events</a></li>
 									</ul>
 								</li>
 

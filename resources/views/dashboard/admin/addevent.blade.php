@@ -27,13 +27,24 @@
           <div class="col-md-12">
             <div class="card card-secondary">
               <div class="card-header">
-                <h3 class="card-title">Add Testimony</h3>
+                <h3 class="card-title">Add </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <form action="{{ route('admin.createteevent') }}" method="post" enctype="multipart/form-data">
                   @csrf
-                  
+                  @if (Session::get('success'))
+                  <div class="alert alert-success">
+                      {{ Session::get('success') }}
+                  </div>
+                  @endif
+
+                  @if (Session::get('fail'))
+                  <div class="alert alert-danger">
+                  {{ Session::get('fail') }}
+                  @endif
+
+
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -59,10 +70,10 @@
                     @enderror 
                      
                     <div class="col-sm-6">
-                       <textarea class="textarea" name="messages" class="form-control" @error('messages') is-invalid @enderror" placeholder="Place some text here"
-                      value="{{ old('messages') }}     style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                       <textarea class="textarea" name="message" class="form-control" @error('message') is-invalid @enderror" placeholder="Place some text here"
+                      value="{{ old('message') }}     style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                      </div>
-                      @error('messages')
+                      @error('message')
                       <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </div>
@@ -187,7 +198,7 @@
       });
       $('.toastsDefaultFullImage').click(function() {
         $(document).Toasts('create', {
-          body: 'Dear {{ Auth::guard('admin')->user()->name }} your account has been suspended, please contact Whatsapp',
+          body: 'Dear {{ Auth::guard('admin')->user()->fname }} your account has been suspended, please contact Whatsapp',
           title: 'Suspended',
           class: 'bg-danger', 
           subtitle: 'Subtitle',
@@ -238,7 +249,7 @@
     });
   
   </script>
-  <script>
+  {{-- <script>
     window.addEventListener('showtoastr', function(event){
       toastr.remove();
       if (event.detail.type == 'info') {
@@ -254,5 +265,5 @@
       }
 
     });
-  </script>
+  </script> --}}
     @include('dashboard.admin.footer')

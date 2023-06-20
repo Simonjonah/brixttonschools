@@ -27,25 +27,24 @@
 
 			<div class="row clearfix">
 
-				
+				@foreach ($view_teams as $view_team)
 				<div class="team-block-two style-two col-lg-3 col-md-6 col-sm-12">
 					<div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<a href="#"><img style="width: 100%; height: 300px;" src="" alt="" title=""></a>
+							<a href="#"><img style="width: 100%; height: 300px;" src="{{ URL::asset("/public/../$view_team->images")}}" alt="" title=""></a>
 							<ul class="social-box">
-								<li><a href="" class="fa fa-facebook"></a></li>
-								<li><a href="" class="fa fa-twitter"></a></li>
-								<li><a href="#" class="fa fa-linkedin"></a></li>
-								<li><a href="" class="fa fa-google-plus"></a></li>
+								<li><a href="{{ $view_team->facebook }}" class="fa fa-facebook"></a></li>
+								<li><a href="{{ $view_team->twitter }}" class="fa fa-twitter"></a></li>
+								<li><a href="{{ $view_team->linkedin }}" class="fa fa-linkedin"></a></li>
 							</ul>
 						</div>
 						<div class="lower-content">
-							<h5><a href="#">simon</a></h5>
-							<div class="designation">teacher</div>
+							<h5><a href="{{ url('viewsinglemember/'.$view_team->ref_no) }}">{{ $view_team->fname }} {{ $view_team->lname }}</a></h5>
+							<div class="designation"><a href="{{ url('viewsinglemember/'.$view_team->ref_no) }}">{{ $view_team->designation }}</a></div>
 						</div>
 					</div>
 				</div>
-				
+				@endforeach
 			</div>
 		</div>
 	</section>

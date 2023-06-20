@@ -5,7 +5,7 @@
     <section class="main-slider style-four">
         <div class="main-slider-carousel owl-carousel owl-theme">
 
-            <div class="slide" style="background-image:url(images/main-slider/bri5.jpg)">
+            <div class="slide" style="background-image:url(images/main-slider/sch11.jpg);  background-size: cover; background-repeat: no-repeat; background-position: center;">
                 <div class="auto-container">
 					<div class="content">
 						<div class="title">BRIXTONN SCHOOLS</div>
@@ -19,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="slide" style="background-image:url(images/main-slider/bri2.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+            <div class="slide" style="background-image:url(images/main-slider/brch4.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
                 <div class="auto-container">
 					<div class="content">
 						<div class="title">BRIXTONN SCHOOLS</div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="slide" style="background-image:url(images/main-slider/brix1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
+            <div class="slide" style="background-image:url(images/main-slider/bri5.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
                 <div class="auto-container">
 					<div class="content">
 						<div class="title">BRIXTONN SCHOOLS</div>
@@ -78,7 +78,7 @@
 				<!-- Content Column -->
 				<div class="image-column col-lg-5 col-md-12 col-sm-12">
 					<div class="inner-column">
-						<div class="image-1"><img style="" src="images/resource/sch20.jpg" alt=""></div>
+						<div class="image-1"><img style="" src="{{ asset('images/resource/sch20.jpg') }}" alt=""></div>
 					</div>
 				</div>
 
@@ -320,7 +320,7 @@
 	
 
 	<!-- Counter Section -->
-	<section class="counter-section" style="background-image:url(images/background/bsch2.jpg)">
+	<section class="counter-section" style="background-image:url({{ asset('images/background/bri2.jpg') }})">
 		<div class="auto-container">
 			<!-- Fact Counter -->
 			<div class="fact-counter style-three">
@@ -397,24 +397,26 @@
 			<div class="row clearfix">
 
 				<!--Team Block-->
-				<?php //if (count($members_teams) > 0): ?>
-				<?php //foreach ($members_teams as $member_team ): ?>
+				@foreach ($view_teams as $view_team)
 				<div class="team-block-two col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<a href="team"><img style="height: 300px; width: 100%;" src="" alt="" title=""></a>
+							<a href="{{ url('viewsinglemember/'.$view_team->ref_no) }}"><img style="height: 300px; width: 100%;" src="{{ URL::asset("/public/../$view_team->images")}}" alt="" title=""></a>
 							<ul class="social-box">
-								<li><a href="" class="fa fa-facebook"></a></li>
-								<li><a href="" class="fa fa-twitter"></a></li>
-								<li><a href="" class="fa fa-google-plus"></a></li>
+								<li><a href="{{ $view_team->facebook }}" class="fa fa-facebook"></a></li>
+								<li><a href="{{ $view_team->twitter }}" class="fa fa-twitter"></a></li>
+								<li><a href="{{ $view_team->linkedin }}" class="fa fa-linkedin"></a></li>
 							</ul>
 						</div>
 						<div class="lower-content">
-							<h5><a href="team">Simon</a></h5>
-							<div class="designation">Teacher</div>
+							<h5><a href="{{ url('viewsinglemember/'.$view_team->ref_no) }}">{{ $view_team->fname }} {{ $view_team->lname }}</a></h5>
+							<div class="designation"><a href="{{ url('viewsinglemember/'.$view_team->ref_no) }}">{{ $view_team->designation }}</a> </div>
 						</div>
 					</div>
 				</div>
+
+				@endforeach
+				
 
 			</div>
 			<div class="text-center">
@@ -430,8 +432,8 @@
 		<div class="auto-container">
 			<h2>Some of our latest <span>events</span></h2>
 			<div class="testimonial-carousel-two owl-carousel owl-theme">
-				
-				<!-- Testimonial Block -->
+				@foreach ($view_events as $view_event)
+					<!-- Testimonial Block -->
 				<div class="testimonial-block-three">
 					<div class="inner-box">
 						<div class="row clearfix">
@@ -440,7 +442,7 @@
 							<div class="image-column col-lg-3 col-md-4 col-sm-12">
 								<div class="inner-column">
 									<div class="image">
-										<img style="width: 100%; height: 250px;" src="" alt="" />
+										<img style="width: 100%; height: 250px;" src="{{ URL::asset("/public/../$view_event->images")}}" alt="" />
 									</div>
 								</div>
 							</div>
@@ -448,13 +450,15 @@
 							<div class="content-column col-lg-9 col-md-8 col-sm-12">
 								<div class="inner-column">
 									<div class="text"><span class="icon flaticon-left-quote"></span></div>
-									<!-- <h5>Amber Lee</h5> -->
-									<!-- <div class="designation">Co-founder</div> -->
+									<h5><a href="{{ url('viewsingleevent/'.$view_event->ref_no)  }}">{{ $view_event->title }}</a></h5>
+									<div class="designation"><a class="btn btn-primary" href="{{ url('viewsingleevent/'.$view_event->ref_no)  }}">View Event</a></div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				@endforeach
+				
 				
 			</div>
 		</div>
@@ -471,30 +475,32 @@
 				<h2>Our latest press  <span>Release</span></h2>
 			</div>
 			<div class="row clearfix">
-			
+			@foreach ($view_blogs as $view_blog)
 				<!-- News Block Three -->
 				<div class="news-block-three col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<a href="press_single/view?id=">
-                    		<img style="width: 1000px; height: 250px;" src="" alt=""></a></h2></span>
+							<a href="{{ url('singleblog/'.$view_blog->ref_no) }}">
+                    		<img style="width: 1000px; height: 250px;" src="{{ URL::asset("/public/../$view_blog->images")}}" alt=""></a></h2></span>
 							
 						</div>
 						<div class="lower-content">
 							<ul class="post-meta">
-								<li><span class="fa fa-calendar"></span>56-76-2012</li>
+								<li><span class="fa fa-calendar"></span>{{ $view_blog->created_at->format('h:i:s a m/d/y') }}</li>
 								<li><span class="fa fa-user"></span></li>
 							</ul>
-							<h4><a href="press_single/view?id=">Topic</a></h4>
+							<h4><a href="{{ url('singleblog/'.$view_blog->ref_no) }}">{{ $view_blog->title }}</a></h4>
 						</div>
 					</div>
 				</div>
 
+			@endforeach
+				
 	
 			
 			</div>
 			<div class="text-center">
-				<a href="blog" class="theme-btn btn-style-fourteen">View All Press</a>
+				<a href="{{ url('blog') }}" class="theme-btn btn-style-fourteen">View All Press</a>
 			</div>
 		</div>
 	</section>
@@ -505,9 +511,9 @@
 			<div class="carousel-outer">
                 <!--Sponsors Slider-->
                 <ul class="sponsors-carousel owl-carousel owl-theme">
-                	
-                    <li><div class="image-box"><a href="#"><img style="width: 100%; height: 100px;" src="" alt=""></a></div></li>
-               
+                	@foreach ($view_blogs as $view_blog)
+                    <li><div class="image-box"><a href="#"><img style="width: 100%; height: 100px;" src="{{ URL::asset("/public/../$view_blog->images")}}" alt=""></a></div></li>
+					@endforeach
                 </ul>
             </div>
 		</div>

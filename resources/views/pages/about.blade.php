@@ -2,7 +2,7 @@
    <!--End Main Header -->
 
 	<!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/bri2.jpg)">
+    <section class="page-title" style="background-image:url({{ asset('images/background/bri2.jpg') }})">
     	<div class="auto-container">
 			<div class="content">
 				<h1>About <span>Us</span></h1>
