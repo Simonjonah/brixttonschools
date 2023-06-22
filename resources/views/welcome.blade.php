@@ -19,6 +19,22 @@
                 </div>
             </div>
 
+
+			<div class="slide" style="background-image:url(images/main-slider/brix.jpg);  background-size: cover; background-repeat: no-repeat; background-position: center;">
+                <div class="auto-container">
+					<div class="content">
+						<div class="title">BRIXTONN SCHOOLS</div>
+						<h1>BRIXTONN <br> SCHOOLS</h1>
+						<div class="text">Excellence through creativity</div>
+						<div class="link-box">
+							<a href="contact" class="theme-btn btn-style-twelve">Let’s start now <span class="fa fa-angle-right"></span></a>
+							<a href="services" class="theme-btn btn-style-thirteen">Our services <span class="fa fa-angle-right"></span></a>
+						</div>
+					</div>
+                </div>
+            </div>
+
+
             <div class="slide" style="background-image:url(images/main-slider/brch4.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
                 <div class="auto-container">
 					<div class="content">
@@ -480,7 +496,7 @@
 				<div class="news-block-three col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<a href="{{ url('singleblog/'.$view_blog->ref_no) }}">
+							<a href="{{ url('singleblog/'.$view_blog->slug) }}">
                     		<img style="width: 1000px; height: 250px;" src="{{ URL::asset("/public/../$view_blog->images")}}" alt=""></a></h2></span>
 							
 						</div>
@@ -489,7 +505,7 @@
 								<li><span class="fa fa-calendar"></span>{{ $view_blog->created_at->format('h:i:s a m/d/y') }}</li>
 								<li><span class="fa fa-user"></span></li>
 							</ul>
-							<h4><a href="{{ url('singleblog/'.$view_blog->ref_no) }}">{{ $view_blog->title }}</a></h4>
+							<h4><a href="{{ url('singleblog/'.$view_blog->slug) }}">{{ $view_blog->title }}</a></h4>
 						</div>
 					</div>
 				</div>

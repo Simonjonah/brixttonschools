@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
+use PDF;
+
 class EventController extends Controller
 {
     //
@@ -27,6 +33,7 @@ class EventController extends Controller
 
         }
         $add_event['images'] = $path;
+        $add_event->slug = SlugService::createSlug(Blog::class, 'slug', $request->title);
         $add_event->title = $request->title;
         $add_event->message = $request->message;
         $add_event->ref_no = substr(rand(0,time()),0, 9);

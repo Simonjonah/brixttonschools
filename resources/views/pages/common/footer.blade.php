@@ -12,7 +12,7 @@
                             <div class="footer-column col-lg-7 col-md-6 col-sm-12">
                                 <div class="footer-widget logo-widget">
 									<div class="logo">
-										<a href="home"><img style="height: 70px; width: 200px;" src="images/sch14.jpg" alt="" /></a>
+										<a href="home"><img style="height: 70px; width: 200px;" src="{{ asset('images/sch14.jpg') }}" alt="" /></a>
 									</div>
 									<div class="text">For additioan information on BRIXTONN SCHOOLS services. Please contact us using the information below.</div>
 									<ul class="list-style-two">
@@ -67,17 +67,23 @@
 									<div class="widget-content">
 										<div class="images-outer clearfix">
 											<!--Image Box-->
-											<figure class="image-box"><a href="images/gallery/nci1.jpg" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img src="images/gallery/nci1.jpg" alt=""></a></figure>
+											<figure class="image-box"><a href="{{ asset('images/gallery/1.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/1.jpg')}}" alt=""></a></figure>
 											<!--Image Box-->
-											<figure class="image-box"><a href="images/gallery/nci2.jpg" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img src="images/gallery/nci2.jpg" alt=""></a></figure>
+											<figure class="image-box"><a href="{{ asset('images/gallery/2.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/2.jpg')}}" alt=""></a></figure>
 											<!--Image Box-->
-											<figure class="image-box"><a href="images/gallery/nci3.jpg" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img src="images/gallery/nci3.jpg" alt=""></a></figure>
+											<figure class="image-box"><a href="{{ asset('images/gallery/4.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/4.jpg')}}" alt=""></a></figure>
 											<!--Image Box-->
-											<figure class="image-box"><a href="images/gallery/nci6.jpg" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img src="images/gallery/nci6.jpg" alt=""></a></figure>
+											<figure class="image-box"><a href="{{ asset('images/gallery/6.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/6.jpg')}}" alt=""></a></figure>
 											<!--Image Box-->
-											<figure class="image-box"><a href="images/gallery/nci4.jpg" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img src="images/gallery/nci5.jpg" alt=""></a></figure>
+											<figure class="image-box"><a href="{{ asset('images/gallery/5.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/5.jpg')}}" alt=""></a></figure>
 											<!--Image Box-->
-											<figure class="image-box"><a href="images/gallery/nci5.jpg" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img src="images/gallery/nci5.jpg" alt=""></a></figure>
+											<figure class="image-box"><a href="{{ asset('images/gallery/7.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/7.jpg')}}" alt=""></a></figure>
+											<!--Image Box-->
+											<figure class="image-box"><a href="{{ asset('images/gallery/10.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/10.jpg')}}" alt=""></a></figure>
+											<!--Image Box-->
+											<figure class="image-box"><a href="{{ asset('images/gallery/11.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/11.jpg')}}" alt=""></a></figure>
+											<!--Image Box-->
+											<figure class="image-box"><a href="{{ asset('images/gallery/12.jpg')}}" class="lightbox-image" data-fancybox="footer-gallery" title="Image Title Here" data-fancybox-group="footer-gallery"><img style="width: 100%; height: 60px;" src="{{ asset('images/gallery/12.jpg')}}" alt=""></a></figure>
 										</div>
 									</div>
 								</div>
@@ -119,32 +125,18 @@
 </div>
 <!--End pagewrapper-->
 
-<script src="js/jquery.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script src="js/appear.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/mixitup.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/main.js"></script>
+<script src="{{ asset('js/jquery.js')}}"></script>
+<script src="{{ asset('js/popper.min.js')}}"></script>
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+<script src="{{ asset('js/jquery.fancybox.js')}}"></script>
+<script src="{{ asset('js/appear.js')}}"></script>
+<script src="{{ asset('js/owl.js')}}"></script>
+<script src="{{ asset('js/mixitup.js')}}"></script>
+<script src="{{ asset('js/wow.js')}}"></script>
+<script src="{{ asset('js/jquery-ui.js')}}"></script>
+<script src="{{ asset('js/main.js')}}"></script>
 
-<!-- <script src="<?php //echo HOME; ?>js/jquery.js"></script>
-<script src="<?php //echo HOME; ?>js/popper.min.js"></script>
-<script src="<?php //echo HOME; ?>js/bootstrap.min.js"></script>
-<script src="<?php //echo HOME; ?>js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="<?php //echo HOME; ?>js/jquery.fancybox.js"></script>
-<script src="<?php //echo HOME; ?>js/appear.js"></script>
-<script src="<?php //echo HOME; ?>js/owl.js"></script>
-<script src="<?php //echo HOME; ?>js/wow.js"></script>
-<script src="<?php //echo HOME; ?>js/jquery-ui.js"></script>
-<script src="<?php //echo HOME; ?>js/main.js"></script>
-<Google Map APi Key-->
- <!--<script src="http://maps.google.com/maps/api/js?key=AIzaSyDTPlX-43R1TpcQUyWjFgiSfL_BiGxslZU"></script>
-<script src="<?php //echo HOME; ?>js/map-script.js"></script>
-<End Google Map APi-->
 
 </body>
 

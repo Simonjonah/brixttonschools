@@ -98,7 +98,23 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.viewgallery') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>View Gallery</p>
+                    <p>View Galleries</p>
+                  </a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a href="{{ route('admin.addfacility') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Facility</p>
+                  </a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a href="{{ route('admin.viewfacility') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Facilities</p>
                   </a>
                 </li>
               </li>

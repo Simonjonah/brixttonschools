@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
+use Cviebrock\EloquentSluggable\Services\SlugService;
+use PDF;
 
 class BlogController extends Controller
 {
@@ -28,6 +32,7 @@ class BlogController extends Controller
 
         }
         $add_blog['images'] = $path;
+        $add_blog->slug = SlugService::createSlug(Blog::class, 'slug', $request->title);
         $add_blog->title = $request->title;
         $add_blog->messages = $request->messages;
         $add_blog->ref_no = substr(rand(0,time()),0, 9);
@@ -70,6 +75,7 @@ class BlogController extends Controller
         $edit_blogs['images'] = $path;
         $edit_blogs->title = $request->title;
         $edit_blogs->messages = $request->messages;
+        $edit_blogs->slug = SlugService::createSlug(Blog::class, 'slug', $request->title);
         $edit_blogs->update();
 
         return redirect()->back()->with('success', 'you have added successfully');
@@ -96,8 +102,8 @@ class BlogController extends Controller
         return redirect()->back()->with('success', 'you have approved successfully');
     }
 
-    public function singleblog($ref_no){
-        $sigle_blogs = Blog::where('ref_no', $ref_no)->first();
+    public function singleblog($slug){
+        $sigle_blogs = Blog::where('slug', $slug)->first();
         $all_blogs = Blog::latest()->where('status', 'approved')->get();
 
         return view('pages.singleblog', compact('sigle_blogs', 'all_blogs'));

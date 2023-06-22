@@ -83,7 +83,7 @@
                         
                       
                          
-                       <td><a href="{{ url('admin/blogedelete/'.$view_gallerie->ref_no) }}"
+                       <td><a href="{{ url('admin/gallerydelete/'.$view_gallerie->ref_no) }}"
                         class='btn btn-danger'>
                          <i class="far fa-trash-alt"></i>
                      </a></td>

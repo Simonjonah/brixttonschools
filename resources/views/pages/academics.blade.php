@@ -30,9 +30,9 @@
 				<div class="services-block-fifteen col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow bounceIn" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img style="width: 100%; height: 200px;" src="images/resource/nci4.jpg" alt="">
+							<img style="width: 100%; height: 200px;" src="images/resource/13.jpg" alt="">
 							<div class="overlay-box">
-								<a href="images/resource/nci4.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="images/resource/13.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
 						<div class="lower-content">
@@ -49,9 +49,9 @@
 				<div class="services-block-fifteen col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow bounceIn" data-wow-delay="300ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img style="width: 100%; height: 200px;" src="images/resource/nci3.jpg" alt="">
+							<img style="width: 100%; height: 200px;" src="images/resource/12.jpg" alt="">
 							<div class="overlay-box">
-								<a href="images/resource/nci3.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="images/resource/12.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
 						<div class="lower-content">
@@ -68,9 +68,9 @@
 				<div class="services-block-fifteen col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow bounceIn" data-wow-delay="600ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img style="width: 100%; height: 200px;" src="images/resource/bsch2.jpg" alt="">
+							<img style="width: 100%; height: 200px;" src="images/resource/10.jpg" alt="">
 							<div class="overlay-box">
-								<a href="images/resource/bsch2.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="images/resource/10.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
 						<div class="lower-content">
@@ -87,9 +87,9 @@
 				<div class="services-block-fifteen col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow bounceIn" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img style="width: 100%; height: 200px;" src="images/resource/nci5.jpg" alt="">
+							<img style="width: 100%; height: 200px;" src="images/resource/15.jpg" alt="">
 							<div class="overlay-box">
-								<a href="images/resource/nci5.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="images/resource/15.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
 						<div class="lower-content">
@@ -106,9 +106,9 @@
 				<div class="services-block-fifteen col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow bounceIn" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img style="width: 100%; height: 200px;" src="images/resource/nci.jpg" alt="">
+							<img style="width: 100%; height: 200px;" src="images/resource/4.jpg" alt="">
 							<div class="overlay-box">
-								<a href="images/resource/nci.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="images/resource/4.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
 						<div class="lower-content">
@@ -125,9 +125,9 @@
 				<div class="services-block-fifteen col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow bounceIn" data-wow-delay="300ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img style="width: 100%; height: 200px;" src="images/resource/nci9.jpg" alt="">
+							<img style="width: 100%; height: 200px;" src="images/resource/1.jpg" alt="">
 							<div class="overlay-box">
-								<a href="images/resource/nci9.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="images/resource/1.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
 						<div class="lower-content">
@@ -142,14 +142,16 @@
 
 
 				<!-- Services Block Fifteen -->
-				<div class="services-block-fifteen col-lg-6 col-md-6 col-sm-12">
+				<div class="services-block-fifteen col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow bounceIn" data-wow-delay="300ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img style="width: 100%; height: 200px;" src="images/resource/nci6.jpg" alt="">
+							<img style="width: 100%; height: 200px;" src="images/resource/11.jpg" alt="">
 							<div class="overlay-box">
-								<a href="images/resource/nci6.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="images/resource/11.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
+						
+						
 						<div class="lower-content">
 							<div class="upper-box">
 								<div class="icon flaticon-hand-shake-1"></div>
@@ -161,12 +163,12 @@
 				</div>
 
 				<!-- Services Block Fifteen -->
-				<div class="services-block-fifteen col-lg-6 col-md-6 col-sm-12">
+				<div class="services-block-fifteen col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow bounceIn" data-wow-delay="300ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img style="width: 100%; height: 200px;" src="images/resource/nci5.jpg" alt="">
+							<img style="width: 100%; height: 200px;" src="images/resource/3.jpg" alt="">
 							<div class="overlay-box">
-								<a href="images/resource/nci5.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="images/resource/3.jpg" data-fancybox="service-2" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
 						<div class="lower-content">

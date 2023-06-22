@@ -62,7 +62,7 @@
                             </div>
                             <ul class="blog-cat-two">
                                 @foreach ($all_blogs as $all_blog)
-                                <li><a href="{{ url('viewsingleevent/'.$all_blog->ref_no) }}">{{ $all_blog->title }}</span></a></li>
+                                <li><a href="{{ url('singleblog/'.$all_blog->slug) }}">{{ $all_blog->title }}</span></a></li>
                                     
                                 @endforeach
                                 

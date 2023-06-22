@@ -67,7 +67,10 @@ class GalleryController extends Controller
         return redirect()->back()->with('success', 'you have added successfully');
 
     }
-    
+    public function gallerydelete($id){
+        $facility_delete = Gallery::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'you have deleted successfully');
+    }
 
     
 }

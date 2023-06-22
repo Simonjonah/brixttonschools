@@ -27,29 +27,42 @@
 				
 				<!-- News Block Two -->
 				
-
+				@foreach ($view_galleries as $view_gallerie)
 
 				<div class="news-block-two brown col-lg-4 col-md-6 col-sm-12">
 					<div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+						
 						<div class="image">
-							<img style="width: 100%; height: 300px;" src="images" alt="" />
+							<img style="width: 100%; height: 300px;" src="{{ URL::asset("/public/../$view_gallerie->images")}}" alt="" />
 							<div class="overlay-box">
-								<a href="images" data-fancybox="news" data-caption="" class="plus flaticon-plus-symbol"></a>
+								<a href="{{ URL::asset("/public/../$view_gallerie->images")}}" data-fancybox="news" data-caption="" class="plus flaticon-plus-symbol"></a>
 							</div>
 						</div>
+						
 						<div class="lower-content">
-							
-							<p>description</p>
+							<h4>{!! $view_gallerie->title !!}</h4>
+							<p>{!! $view_gallerie->messages !!}</p>
 							
 						</div>
 					</div>
 				</div>
 				
-				
+				@endforeach
 				
 
 			</div>
 
+			<div class="d-flex justify-content-center">
+				{{ $view_galleries->links() }}
+			</div>
+			
+				
+				<style>
+					.w-5{
+						display: none;
+					}
+				</style>
+				<!--End Styled Pagination-->
 			
 		</div>
 	</section>
@@ -64,8 +77,10 @@
                 <ul class="sponsors-carousel owl-carousel owl-theme">
                 	
 					
-
-                    <li><div class="image-box"><a href="#"><img style="width: 100%; height: 150px;" src="{{ URL::asset("/public/../$edit_gallery->images")}}" alt=""></a></div></li>
+					@foreach ($view_galleries as $view_gallerie)
+                    	<li><div class="image-box"><a href="#"><img style="width: 100%; height: 150px;" src="{{ URL::asset("/public/../$view_gallerie->images")}}" alt=""></a></div></li>
+						
+					@endforeach
                
 					
 					

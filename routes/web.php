@@ -10,10 +10,13 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\FacilityController;
 
 use App\Models\Team;
 use App\Models\Event;
 use App\Models\Blog;
+use App\Models\Gallery;
+use App\Models\Facility;
 
 
 /*TeamController
@@ -78,10 +81,13 @@ Route::get('/contact', function () {
     return view('pages.contact');
 });
 Route::get('/gallery', function () {
-    return view('pages.gallery');
+    $view_galleries = Gallery::latest()->paginate(10);
+    return view('pages.gallery', compact('view_galleries'));
 });
 Route::get('/facilities', function () {
-    return view('pages.facilities');
+    $view_facilities = Gallery::latest()->paginate(10);
+
+    return view('pages.facilities', compact('view_facilities'));
 });
 
 Route::get('/teacherform', function () {
@@ -94,7 +100,7 @@ Route::post('/createteacher', [UserController::class, 'createteacher'])->name('c
 Route::get('/viewsingleevent/{ref_no}', [EventController::class, 'viewsingleevent'])->name('viewsingleevent');
 Route::get('/viewsinglemember/{ref_no}', [TeamController::class, 'viewsinglemember'])->name('viewsinglemember');
 
-Route::get('/singleblog/{ref_no}', [BlogController::class, 'singleblog'])->name('singleblog');
+Route::get('/singleblog/{slug}', [BlogController::class, 'singleblog'])->name('singleblog');
 
 Route::prefix('admin')->name('admin.')->group(function() {
 
@@ -153,6 +159,19 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/viewgallery', [GalleryController::class, 'viewgallery'])->name('viewgallery');
         Route::get('/galleryedit/{id}', [GalleryController::class, 'galleryedit'])->name('galleryedit');
         Route::put('/updategallery/{id}', [GalleryController::class, 'updategallery'])->name('updategallery');
+        Route::put('/gallerydelete/{id}', [GalleryController::class, 'gallerydelete'])->name('gallerydelete');
+        
+        Route::get('/addfacility', [FacilityController::class, 'addfacility'])->name('addfacility');
+        Route::post('/createfacility', [FacilityController::class, 'createfacility'])->name('createfacility');
+        Route::get('/viewfacility', [FacilityController::class, 'viewfacility'])->name('viewfacility');
+        Route::get('/facilityedit/{id}', [FacilityController::class, 'facilityedit'])->name('facilityedit');
+        Route::put('/updatefacility/{id}', [FacilityController::class, 'updatefacility'])->name('updatefacility');
+        Route::get('/facilitydelete/{id}', [FacilityController::class, 'facilitydelete'])->name('facilitydelete');
+        
+        
+
+
+
         
         Route::get('/addcources', [CourseController::class, 'addcources'])->name('addcources');
         Route::get('/addnidnetcoursesl1stsem', [RegistercourseController::class, 'addnidnetcoursesl1stsem'])->name('addnidnetcoursesl1stsem');
