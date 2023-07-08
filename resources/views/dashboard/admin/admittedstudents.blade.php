@@ -197,10 +197,11 @@
                     <th>Edit</th>
                     <th>Status</th>
                     <th>Reject</th>
-                    <th>Approved</th>
+                
                     <th>Suspend</th>
                     <th>Admit</th>
                     <th>Print</th>
+                    <th>Print Med</th>
                     <th>Delete</th>
                     <th>Date</th>
 
@@ -208,56 +209,55 @@
                   </thead>
                   <tbody>
 
-                    @foreach ($viewall_studentsinprogress as $viewall_studentsinprogres)
-                      @if ($viewall_studentsinprogres->status = 'admitted' || $viewall_studentsinprogres->status = 'approved')
+                    @foreach ($admit_students as $admit_student)
+                      @if ($admit_student->status = 'admitted')
                       <tr>
-                        <td>{{ $viewall_studentsinprogres->surname }}</td>
-                        <td>{{ $viewall_studentsinprogres->fname }}</td>
-                        <td>{{ $viewall_studentsinprogres->middlename }}</td>
-                        <td>{{ $viewall_studentsinprogres->regnumber }}</td>
-                        <td><img style="width: 100%; height: 60px;" src="{{ URL::asset("/public/../$viewall_studentsinprogres->passpot")}}" alt=""></td>
-                        <td><a href="{{ url('admin/addregno/'.$viewall_studentsinprogres->id) }}"
+                        <td>{{ $admit_student->surname }}</td>
+                        <td>{{ $admit_student->fname }}</td>
+                        <td>{{ $admit_student->middlename }}</td>
+                        <td>{{ $admit_student->regnumber }}</td>
+                        <td><img style="width: 100%; height: 60px;" src="{{ URL::asset("/public/../$admit_student->images")}}" alt=""></td>
+                        <td><a href="{{ url('admin/addregno/'.$admit_student->id) }}"
                             class='btn btn-default'>
                              <i class="far fa-eye">Add Reg No</i>
                          </a></td>
 
 
-                         <td><a href="{{ url('admin/viewstudents/'.$viewall_studentsinprogres->ref_no) }}"
+                         <td><a href="{{ url('admin/viewstudents/'.$admit_student->ref_no) }}"
                           class='btn btn-default'>
                            <i class="far fa-eye"></i>
                        </a></td>
-                         <td><a href="{{ url('admin/editstudent/'.$viewall_studentsinprogres->id) }}"
+                         <td><a href="{{ url('admin/editstudent/'.$admit_student->ref_no) }}"
                           class='btn btn-info'>
                            <i class="far fa-edit"></i>
                        </a></td>
-                       <td>@if ($viewall_studentsinprogres->status == null)
+                       <td>@if ($admit_student->status == null)
                         <span class="badge badge-secondary"> In progress</span>
-                       @elseif($viewall_studentsinprogres->status == 'admitted')
+                       @elseif($admit_student->status == 'admitted')
                        <span class="badge badge-success"> Admitted</span>
                        
                        @endif</td>
                        
                        
 
-                       <th><a href="{{ url('admin/rejectstudent/'.$viewall_studentsinprogres->surname) }}" class="btn btn-sm bg-teal">
+                       <th><a href="{{ url('admin/rejectstudent/'.$admit_student->ref_no) }}" class="btn btn-sm bg-teal">
                         <i class="fas fa-user"></i>
                       </a></th>
-                      <th><a href="{{ url('admin/studentsapprove/'.$viewall_studentsinprogres->surname) }}" class="btn btn-sm bg-teal">
-                        <i class="fas fa-comments"></i>
-                      </a></th><th><a href="{{ url('admin/suspendstudent/'.$viewall_studentsinprogres->surname) }}" class="btn btn-sm bg-teal">
+                     <th><a href="{{ url('admin/suspendstudent/'.$admit_student->ref_no) }}" class="btn btn-sm bg-teal">
                         <i class="fas fa-comments"></i>
                       </a></th>
 
-                      <th> <a href="{{ url('admin/studentsaddmit/'.$viewall_studentsinprogres->surname) }}" class="btn btn-sm btn-primary">
+                      <th> <a href="{{ url('admin/studentsaddmit/'.$admit_student->ref_no) }}" class="btn btn-sm btn-primary">
                         <i class="fas fa-user"></i> 
                       </a></th>
-                      <th><a href="{{ url('admin/studentpdf/'.$viewall_studentsinprogres->surname) }}" class="btn btn-success"><i class="fas fa-print"></i></a></th>
-                       <td><a href="{{ url('admin/deletestudent/'.$viewall_studentsinprogres->surname) }}"
+                      <th><a href="{{ url('admin/allstudentpdf/'.$admit_student->ref_no) }}" class="btn btn-success"><i class="fas fa-print"></i></a></th>
+                      <th><a href="{{ url('admin/medicalspdf/'.$admit_student->ref_no) }}" class="btn btn-info"><i class="fas fa-print">Print Medicals</i></a></th>
+                       <td><a href="{{ url('admin/deletestudent/'.$admit_student->ref_no) }}"
                         class='btn btn-danger'>
                          <i class="far fa-trash-alt"></i>
                      </a></td>
                         
-                     <td>{{ $viewall_studentsinprogres->created_at->format('D d, M Y, H:i')}}</td>
+                     <td>{{ $admit_student->created_at->format('D d, M Y, H:i')}}</td>
 
                       </tr>
                       @else
@@ -282,10 +282,11 @@
                       <th>Edit</th>
                       <th>Status</th>
                       <th>Reject</th>
-                      <th>Approved</th>
+                  
                       <th>Suspend</th>
                       <th>Admit</th>
                       <th>Print</th>
+                      <th>Print Med</th>
                       <th>Delete</th>
                       <th>Date</th>
   

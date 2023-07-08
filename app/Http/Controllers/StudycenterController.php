@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Studycenter;
+use App\Models\Classname;
+
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Auth;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 class StudycenterController extends Controller
 {
     //
 
-    public function studycenter(){
+    public function studycenter1(){
 
-        return view('dashboard.admin.studycenter');
+        return view('dashboard.admin.studycenter1');
     }
 
    
@@ -22,10 +25,16 @@ class StudycenterController extends Controller
         //create method
         $request->validate([
             'centername' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'section' => ['required', 'string', 'max:255'],
+
 
         ]);
         $reg_studycenter = new Studycenter();
         $reg_studycenter->centername = $request->centername;
+        $reg_studycenter->address = $request->address;
+        $reg_studycenter->section = $request->section;
+        $reg_studycenter->slug = SlugService::createSlug(Studycenter::class, 'slug', $request->centername);
         $reg_studycenter->save();
  
         if ($reg_studycenter) {
@@ -59,6 +68,13 @@ class StudycenterController extends Controller
         $approve_syudycenters = Studycenter::where('id', $id)->delete();
       
         return redirect()->back()->with('success', 'you have deleted successfully');
+    }
+
+    public function admissionform($slug){
+        $centerviews = Studycenter::where('slug', $slug)->first();
+        $add_class = Classname::all();
+        return view('pages.admissionform', compact('add_class', 'centerviews'));
+        
     }
     
 }

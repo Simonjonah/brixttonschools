@@ -55,6 +55,34 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
+                Add Classes
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <li class="nav-item">
+                  <a href="{{ route('admin.addclass') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Class</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="{{ route('admin.viewclassestables') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Classes</p>
+                  </a>
+                </li>
+              </li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
                 Add Center
                 <i class="fas fa-angle-left right"></i>
               </p>
@@ -62,7 +90,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <li class="nav-item">
-                  <a href="{{ route('admin.studycenter') }}" class="nav-link">
+                  <a href="{{ route('admin.studycenter1') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add Study Center</p>
                   </a>
@@ -71,12 +99,14 @@
                 <li class="nav-item">
                   <a href="{{ route('admin.studycentertables') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>View Study center</p>
+                    <p>View Study Center</p>
                   </a>
                 </li>
               </li>
             </ul>
           </li>
+
+
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -117,6 +147,22 @@
                     <p>View Facilities</p>
                   </a>
                 </li>
+
+
+                <li class="nav-item">
+                  <a href="{{ route('admin.addmainslider') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Main Slider</p>
+                  </a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a href="{{ route('admin.viewmainslider') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Main Slider</p>
+                  </a>
+                </li>
               </li>
             </ul>
           </li>
@@ -142,13 +188,7 @@
                   <p>Rejected Students</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.approvedstudents') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Approved Students</p>
-                </a>
-              </li>
-
+              
               <li class="nav-item">
                 <a href="{{ route('admin.suspendstudents') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Sanctum\HasApiTokens;
 class Studycenter extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    use Sluggable;
     /**
      * The attributes that are mass assignable.
      *
@@ -40,7 +41,14 @@ class Studycenter extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'centername'
+            ]
+        ];
+    }
     
 
 
@@ -65,10 +73,9 @@ protected $appends = ['referral_link'];
 //     return $this->referral_link = route('register', ['ref' => $this->username]);
 // }
 
-// public function roles() 
-//     {
-//         return $this->hasMany(Role::class);
-//     }
+// public function users() {
+//     return $this->hasMany(User::class, 'slug');
+// }
 
 
 }

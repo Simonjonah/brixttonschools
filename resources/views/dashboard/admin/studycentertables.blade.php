@@ -40,6 +40,8 @@
                   <thead>
                     <tr>
                         <th>Study CenterName</th>
+                        <th>Address</th>
+                        <th>Section</th>
                         <th>Status</th>
                         <th>Approved</th>
                         <th>Suspend</th>
@@ -62,9 +64,9 @@
                     @foreach ($study_centertables as $study_centertable)
                     <tr>
                         <td>{{ $study_centertable->centername }}</td>
+                        <td>{{ $study_centertable->address }}</td>
+                        <td>{{ $study_centertable->section }}</td>
                       
-                          
-                        
                         <td>@if ($study_centertable->status == null)
                           <span class="badge badge-secondary"> In progress</span>
                          @elseif($study_centertable->status == 'suspend')
@@ -101,6 +103,9 @@
                   <tfoot>
                     <tr>
                         <th>Study CenterName</th>
+                        <th>Address</th>
+                        <th>Section</th>
+
                         <th>Status</th>
                         <th>Approved</th>
                         <th>Suspend</th>

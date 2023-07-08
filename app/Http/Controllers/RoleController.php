@@ -20,6 +20,7 @@ class RoleController extends Controller
         ]);
         $registration = new Role();
         $registration->role = $request->role;
+        $registration->save();
        
  
         if ($registration) {

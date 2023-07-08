@@ -27,6 +27,11 @@
 </head>
 
 <body>
+	<?php
+		
+		use App\Models\Studycenter;
+		$display_studycenters = Studycenter::all();
+	?>
 
 <div class="page-wrapper">
  	
@@ -94,9 +99,10 @@
 									</li>
 									<li class="dropdown"><a href="#">Admission</a>
 										<ul>
-											<li><a href="{{ url('nurseryform') }}">Nursery/Primary</a></li>
-											<li><a href="{{ url('secondaryform') }}">Secondary</a></li> 
-											
+											@foreach ($display_studycenters as $display_studycenter)
+												<li><a href="{{ url('admission/admissionform/'.$display_studycenter->slug) }}">{{ $display_studycenter->centername }}</a></li>
+											@endforeach
+											{{-- <li><a href="{{ url('secondaryform') }}">Secondary</a></li>  --}}
 										</ul>
 									</li>
 									<li class="dropdown"><a href="#">Press Release</a>
@@ -199,8 +205,9 @@
 									
 								<li class="dropdown"><a href="#">Admission</a>
 									<ul>
-										<li><a href="{{ url('nurseryform') }}">Nursery/Primary</a></li>
-									<li><a href="{{ url('secondaryform') }}">Secondary</a></li> 
+										@foreach ($display_studycenters as $display_studycenter)
+												<li><a href="{{ url('admission/admissionform/'.$display_studycenter->slug) }}">{{ $display_studycenter->centername }}</a></li>
+											@endforeach
 									</ul>
 								</li>
 								<li class="dropdown"><a href="#">Press Release</a>

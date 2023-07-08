@@ -30,34 +30,37 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img style="width: 100%; height: 200px;" class="profile-user-img img-fluid"
-                       src="{{ URL::asset("/public/../$view_singlstudent->passpot")}}"
+                       src="{{ URL::asset("/public/../$view_students->images")}}"
                        alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">{{ $view_singlstudent->surname }}, {{ $view_singlstudent->fname }} {{ $view_singlstudent->middlename }}</h3>
+                <h3 class="profile-username text-center">{{ $view_students->surname }}, {{ $view_students->fname }} {{ $view_students->middlename }}</h3>
 
-                <p class="text-muted text-center"> {{ $view_singlstudent->email }}</p>
+                <p class="text-muted text-center"> {{ $view_students->email }}</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Course</b> <a href="" style="text-transform: uppercase" class="float-right">{{ $view_singlstudent->programname }}</a>
+                    <b>Center Name</b> <a href="" style="text-transform: uppercase" class="float-right">{{ $view_students->centername }}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Period</b> <a class="float-right">{{ $view_singlstudent->course_period }}</a>
+                    <b>Class Name</b> <a class="float-right">{{ $view_students->classname }}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>DOB</b> <a class="float-right">{{ $view_singlstudent->dob }}</a>
+                    <b>DOB</b> <a class="float-right">{{ $view_students->dob }}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Section</b> <a class="float-right">{{ $view_students->section }}</a>
                   </li>
 
                   
                   <li class="list-group-item">
-                    <b>Status</b> <a class="float-right">@if ($view_singlstudent->status == null)
+                    <b>Status</b> <a class="float-right">@if ($view_students->status == null)
                       <span class="badge badge-secondary">Admission In progress</span>
-                    @elseif ($view_singlstudent->status == 'rejected')
+                    @elseif ($view_students->status == 'rejected')
                     <span class="badge badge-danger">Rejected</span>
-                    @elseif ($view_singlstudent->status == 'suspend')
+                    @elseif ($view_students->status == 'suspend')
                     <span class="badge badge-warning">Suspended</span>
-                    @elseif ($view_singlstudent->status == 'approved')
+                    @elseif ($view_students->status == 'approved')
                     <span class="badge badge-info">Approved</span>
                     @else
                     <span class="badge badge-success">Admitted</span>
@@ -74,47 +77,28 @@
             <!-- About Me Box -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">About Program</h3>
+                <h3 class="card-title">Bio</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <strong><i class="fas fa-book mr-1"></i> Student Education Level </strong>
 
                 <p class="text-muted">
-                  {{ $view_singlstudent->quali_obtain }}
-                  <p>Study Area</p>
-                  {{ $view_singlstudent->studyarea }} 
-                  <p>Study Name of School</p>
-                  {{ $view_singlstudent->institname }} 
-                  <p>Grade Pass</p>
-                  {{ $view_singlstudent->gradepass }} 
+                  {{ $view_students->lastschool }}
+                  <p>Near Contact</p>
+                  {{ $view_students->landmark }} 
+                  <p>School Address</p>
+                  {{ $view_students->schooladdress }} 
+                  <p>Other Siblings in Brixtonn</p>
+                  {{ $view_students->brixtonsiblings }} 
                 </p>
-                <p>Study Year</p>
-                  {{ $view_singlstudent->studyear }} 
-                </p>
-
-                <hr>
-
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Session Applied</strong>
-
-                <p class="text-muted">{{ $view_singlstudent->sessionapplied }} </p>
-
-                <hr>
-
-                <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-                <p class="text-muted">
-                  <span class="tag tag-danger">{{ $view_singlstudent->course_title }}</span>
-                  
-                </p>
-                <strong><i class="fas fa-pencil-alt mr-1"></i> ₦ {{ $view_singlstudent->amount }}</strong>
                 
 
-                 <hr>
+               
 
                 <strong><i class="far fa-file-alt mr-1"></i> Note:</strong>
 
-                <p class="text-muted">{{ $view_singlstudent->fname }} {{ $view_singlstudent->middlename }} {{ $view_singlstudent->surname }} hereby declare that the information given by me in this form is correct. I understand that if any piece of informatio is false i shall automatically be disqualified</p>
+                <p class="text-muted">{{ $view_students->fname }} {{ $view_students->middlename }} {{ $view_students->surname }} hereby declare that the information given by me in this form is correct. I understand that if any piece of informatio is false i shall automatically be disqualified</p>
               </div> 
               
               <!-- /.card-body -->
@@ -128,10 +112,10 @@
                 <ul class="nav nav-pills">
                   {{-- <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Activity</a></li> --}}
                   <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Bio Data</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Sponsor</a></li>
-                  {{-- <li class="nav-item"><a class="nav-link" href="#sponsor" data-toggle="tab">Sponsor</a></li> --}}
-                  <li class="nav-item"><a class="nav-link" href="#olevels1" data-toggle="tab">Olevels 1st sitting</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#olevels2" data-toggle="tab">Olevels 2nd sitting</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Father Details</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#mother" data-toggle="tab">Mother Details</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#olevels1" data-toggle="tab">Medical Reports</a></li>
+                  {{-- <li class="nav-item"><a class="nav-link" href="#olevels2" data-toggle="tab">Olevels 2nd sitting</a></li> --}}
 
                   <li class="nav-item"><a class="nav-link" href="#quali" data-toggle="tab">Qualifications</a></li>
 
@@ -149,7 +133,7 @@
                       <!-- timeline time label -->
                       <div class="time-label">
                         <span class="bg-danger">
-                          {{ $view_singlstudent->created_at->format('D d, M Y, H:i')}}
+                          {{ $view_students->created_at->format('D d, M Y, H:i')}}
                         </span>
                       </div>
                       <!-- /.timeline-label -->
@@ -158,13 +142,13 @@
                         <i class="fas fa-envelope bg-primary"></i>
 
                         <div class="timeline-item">
-                          <span class="time"><i class="far fa-clock"></i> {{ $view_singlstudent->created_at->diffForHumans() }}</span>
+                          <span class="time"><i class="far fa-clock"></i> {{ $view_students->created_at->diffForHumans() }}</span>
 
-                          <h3 class="timeline-header"><a href="mailTo:{{ $view_singlstudent->email }}">Email </a> {{ $view_singlstudent->email }}</h3>
-                          <h3 class="timeline-header"><a href="mailTo:{{ $view_singlstudent->nationality }}">Nationality </a> {{ $view_singlstudent->nationality }}</h3>
+                          <h3 class="timeline-header"><a href="mailTo:{{ $view_students->email }}">Email </a> {{ $view_students->email }}</h3>
+                          <h3 class="timeline-header"><a href="mailTo:{{ $view_students->nationality }}">Nationality </a> {{ $view_students->nationality }}</h3>
 
                           <div class="timeline-body">
-                            {{ $view_singlstudent->contactaddress }}
+                            {{ $view_students->contactaddress }}
                           </div>
                           
                         </div>
@@ -175,12 +159,12 @@
                         <i class="fas fa-user bg-info"></i>
 
                         <div class="timeline-item">
-                          <span class="time"><i class="far fa-clock"></i> {{ $view_singlstudent->created_at->diffForHumans()}}</span>
+                          <span class="time"><i class="far fa-clock"></i> {{ $view_students->created_at->diffForHumans()}}</span>
 
-                          <h3 class="timeline-header border-0"><a href="#">{{ $view_singlstudent->phone }}</a>
+                          <h3 class="timeline-header border-0"><a href="#">{{ $view_students->phone }}</a>
                           </h3>
 
-                          <h3 class="timeline-header border-0"><a href="#">{{ $view_singlstudent->logalgovt }}</a>
+                          <h3 class="timeline-header border-0"><a href="#">{{ $view_students->logalgovt }}</a>
                           </h3>
                         </div>
                       </div>
@@ -190,21 +174,18 @@
                         <i class="fas fa-comments bg-warning"></i>
 
                          <div class="timeline-item">
-                          <span class="time"><i class="far fa-clock"></i> {{ $view_singlstudent->created_at->diffForHumans()}}</span>
+                          <span class="time"><i class="far fa-clock"></i> {{ $view_students->created_at->diffForHumans()}}</span>
 
-                          <h3 class="timeline-header"><a href="#">State</a> {{ $view_singlstudent->state }}</h3>
+                          <h3 class="timeline-header"><a href="#">State</a> {{ $view_students->state }}</h3>
 
-                          <div class="timeline-body">
-                            I {{ $view_singlstudent->fname }} {{ $view_singlstudent->middlename}} {{ $view_singlstudent->surname}} hereby declare that the information given by me in this form is correct. I understand that if any piece of informatio is false i shall automatically be disqualified
-                          </div>
-                         
+                          
                         </div>
                       </div>
                       <!-- END timeline item -->
                       <!-- timeline time label -->
                       <div class="time-label">
                         <span class="bg-success">
-                          {{ $view_singlstudent->created_at->toFormattedDateString() }}
+                          {{ $view_students->created_at->toFormattedDateString() }}
                         </span>
                       </div>
                       <!-- /.timeline-label -->
@@ -217,57 +198,76 @@
                         <i class="far fa-clock bg-gray"></i>
                       </div>
                     </div>
+                    <div class="form-group">
+                      <label for="">Gender</label>
+                       <input type="text" class="form-control" value="{{ $view_students->gender }}" id="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="">Propose Month of Entry</label>
+                       <input type="text" class="form-control" value="{{ $view_students->monthofentry }}" id="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="">Religion</label>
+                       <input type="text" class="form-control" value="{{ $view_students->religion }}" id="">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Place of Birth</label>
+                       <input type="text" class="form-control" value="{{ $view_students->placeofbirth }}" id="">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="">How You hear About Us</label>
+                       <input type="text" class="form-control" value="{{ $view_students->aboutus }}" id="">
+                    </div>
                   </div>
                   <!-- /.tab-pane -->
 
-
+                    
 
                   <div class="tab-pane" id="quali">
                     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          
-          <div class="col-12">
-            <div class="card card-primary">
-              <div class="card-header">
-                <div class="card-title">
-                  All Qualification submitted by {{ $view_singlstudent->surname }} {{ $view_singlstudent->fname }}
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-2">
-                    <a href="{{ URL::asset("/public/../$view_singlstudent->olevel2")}}?text=1" data-toggle="lightbox" data-title="Olevel first sitting  - white" data-gallery="gallery">
-                      <img src="{{ URL::asset("/public/../$view_singlstudent->olevel2")}}" class="img-fluid mb-2" alt="white sample"/>
-                    </a>
-                  </div>
+                    <section class="content">
+                      <div class="container-fluid">
+                        <div class="row">
+                          
+                          <div class="col-12">
+                            <div class="card card-primary">
+                              <div class="card-header">
+                                <div class="card-title">
+                                  All Qualification submitted by {{ $view_students->surname }} {{ $view_students->fname }}
+                                </div>
+                              </div>
+                              <div class="card-body">
+                                <div class="row">
+                                  <div class="col-sm-2">
+                                    <a href="{{ URL::asset("/public/../$view_students->images")}}?text=1" data-toggle="lightbox" data-title="Passport  - white" data-gallery="gallery">
+                                      <img style="width: 100%; height: 80%" src="{{ URL::asset("/public/../$view_students->images")}}" class="img-fluid mb-2" alt="white sample"/>
+                                    </a>
+                                  </div>
 
-                  <div class="col-sm-2">
-                    <a href="{{ URL::asset("/public/../$view_singlstudent->olevel")}}?text=1" data-toggle="lightbox" data-title="Olevel second sitting" data-gallery="gallery">
-                      <img src="{{ URL::asset("/public/../$view_singlstudent->olevel")}}" class="img-fluid mb-2" alt="white sample"/>
-                    </a>
-                  </div>
+                                  <div class="col-sm-2">
+                                    <a href="{{ URL::asset("/public/../$view_students->immune")}}?text=1" data-toggle="lightbox" data-title="Immunization" data-gallery="gallery">
+                                      <img style="width: 100%; height: 80%" src="{{ URL::asset("/public/../$view_students->immune")}}" class="img-fluid mb-2" alt="white sample"/>
+                                    </a>
+                                  </div>
 
-                  <div class="col-sm-2">
-                    <a href="{{ URL::asset("/public/../$view_singlstudent->additionalquali")}}?text=1" data-toggle="lightbox" data-title="Additional Qualifications" data-gallery="gallery">
-                      <img src="{{ URL::asset("/public/../$view_singlstudent->additionalquali")}}" class="img-fluid mb-2" alt="white sample"/>
-                    </a>
-                  </div>
+                                  <div class="col-sm-2">
+                                    <a href="{{ URL::asset("/public/../$view_students->birthcert")}}?text=1" data-toggle="lightbox" data-title="Birth Certificate" data-gallery="gallery">
+                                      <img style="width: 100%; height: 80%" src="{{ URL::asset("/public/../$view_students->birthcert")}}" class="img-fluid mb-2" alt="white sample"/>
+                                    </a>
+                                  </div>
 
-                  <div class="col-sm-2">
-                    <a href="{{ URL::asset("/public/../$view_singlstudent->passpot")}}?text=1" data-toggle="lightbox" data-title="Additional Qualifications" data-gallery="gallery">
-                      <img src="{{ URL::asset("/public/../$view_singlstudent->passpot")}}" class="img-fluid mb-2" alt="white sample"/>
-                    </a>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+                                  
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div><!-- /.container-fluid -->
+                    </section>
                   </div>
 
                   
@@ -287,21 +287,142 @@
                       @method('PUT')
 
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label"> Sponsor Name</label>
+                        <label for="inputName" class="col-sm-2 col-form-label"> Father SurName</label>
                         <div class="col-sm-10">
-                          <input type="text" name="name" value="{{ $view_singlstudent->sponsorname }}" class="form-control" id="inputName" placeholder="First Name">
+                          <input type="text" name="name" value="{{ $view_students->title }} {{ $view_students->fathersurname }}" class="form-control" id="inputName" placeholder="First Name">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label"> Address of Sponsor</label>
+                        <label for="inputName" class="col-sm-2 col-form-label"> Father FirstName</label>
                         <div class="col-sm-10">
-                          <input type="text" name="lastname" value="{{ $view_singlstudent->sponsoraddress }}" class="form-control" id="inputName" placeholder="Last Name">
+                          <input type="text" name="lastname" value="{{ $view_students->fathername }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div>
+
+                      {{-- <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> Father MiddleName</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->middlename }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div> --}}
+
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> Father MiddleName</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->middlename }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div><div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> Father Email</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->fatheremail }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div><div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> Father Phone</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->fatherphone }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div><div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> Father Employer</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->fatheremployer }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+
+
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Nationality</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->nationality }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div>
+
+                      
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->fatheraddress }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Relationship</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->relationship }}" class="form-control" id="inputName" placeholder="Last Name">
                         </div>
                       </div>
                       
-                      
                     </form>
                   </div>
+
+
+
+
+
+                  <div class="tab-pane" id="mother">
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                      @csrf
+                      
+
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> Father SurName</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="name" value="{{ $view_students->mothertitle }} {{ $view_students->mothersurname }}" class="form-control" id="inputName" placeholder="First Name">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> mother FirstName</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->mothername }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> mother MiddleName</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->middlename }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> mother MiddleName</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->middlename }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div><div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> mother Email</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->motheremail }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div><div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> mother Phone</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->motherphone }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div><div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label"> mother Employer</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->motheremployer }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+
+
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Nationality</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->nationality }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div> 
+                      <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-10">
+                          <input type="text" name="lastname" value="{{ $view_students->motheraddress }}" class="form-control" id="inputName" placeholder="Last Name">
+                        </div>
+                      </div>                      
+                    </form>
+                  </div>
+
+
+
 
                   <div class="tab-pane" id="olevels1">
                   
@@ -309,465 +430,147 @@
                       <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                           <div class="form-group row">
-                            <label for="inputName">Center Name</label>
+                            <label for="inputName">Does your child has SS genotype?</label>
                             <div class="col-sm-10">
-                              <input type="text" name="name" value="{{ $view_singlstudent->centre_name }}" class="form-control" id="inputName" placeholder="First Name">
+                              <div class="form-group">
+                                <h5>Does your child have SS genotype?</h5>
+                                <label for="vehicle1"> {{ $view_students->genotype1 }}</label><br>
+                                <label for="vehicle1"> {{ $view_students->genotype2 }}</label><br>
+                            </div>
+
+                            <div class="form-group">
+                              <h5>Has your Child any of the following conditions?</h5>
+                              <label for="vehicle1"> {{ $view_students->symtoms1 }}</label><br>
+                              <label for="vehicle1"> {{ $view_students->symtoms2 }}</label><br>
+                              <label for="vehicle1"> {{ $view_students->symtoms3 }}</label><br>
+                          </div>
+
+
+
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label for="inputName"> Exam Number</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="lastname" value="{{ $view_singlstudent->examnumber }}" class="form-control" id="inputName" placeholder="Last Name">
-                            </div>
+                            <div class="form-group">
+                              <h5>Is your Child asthmatic?</h5>
+                              <label for="vehicle1"> {{ $view_students->asthmatic1 }}</label><br>
+                              <label for="vehicle1"> {{ $view_students->asthmatic2 }}</label><br>
+                          </div>
                           </div>
                           
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12">
                           <div class="form-group row">
-                            <label for="inputName"> Year Obtain</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="name" value="{{ $view_singlstudent->yearobtain }}" class="form-control" id="inputName" placeholder="First Name">
-                            </div>
+                            <div class="form-group">
+                              <h5>Has your child any medical condition or form of allergy that the school should know about?</h5>
+                              <label for="vehicle1"> {{ $view_students->medicalcondition1 }}</label><br>
+                              <label for="vehicle1"> {{ $view_students->medicalcondition2 }}</label><br>
                           </div>
+                          </div>
+
                           <div class="form-group row">
-                            <label for="inputName"> Qualification Obtain</label>
-                            <div class="col-sm-10">
-                              <input type="text" name="lastname" value="{{ $view_singlstudent->quali_obtain }}" class="form-control" id="inputName" placeholder="Last Name">
-                            </div>
+                            <div class="form-group">
+                              <h5>Has your child been diagnosed with having specific learning difficilties such as Dyslyxia, ADHD or any other?</h5>
+                              <label for="vehicle1"> {{ $view_students->diagnose1 }}</label><br>
+                              <label for="vehicle1"> {{ $view_students->diagnose2 }}</label><br>
+                              <label for="vehicle1"> {{ $view_students->diagnose3 }}</label><br>
                           </div>
+
+                          <div class="form-group">
+                            <h5>Has your child been Immunized with the following?</h5>
+                            <label for="vehicle1"> {{ $view_students->diagnose1 }}</label><br>
+                            <label for="vehicle1"> {{ $view_students->diagnose2 }}</label><br>
+                            <label for="vehicle1"> {{ $view_students->diagnose3 }}</label><br>
+                        </div>
+                        </div>
                         </div>
 
-                        <table class="col-lg-12">
-                                        
-                          <tr><th> <h3 style="text-align: center">Subject Taken</h3></th></tr>
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject1" id="">
-                                      <option value="{{ $view_singlstudent->subject1 }}">{{ $view_singlstudent->subject1 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade1" id="">
-                                      <option value="{{ $view_singlstudent->grade1 }}">{{ $view_singlstudent->grade1 }}</option>
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject2" id="">
-                                      <option value="{{ $view_singlstudent->subject2 }}">{{ $view_singlstudent->subject2 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade2" id="">
-                                      <option value="{{ $view_singlstudent->grade2 }}">{{ $view_singlstudent->grade2 }}</option>
-                
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
-                
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject3" id="">
-                                      <option value="{{ $view_singlstudent->subject3 }}">{{ $view_singlstudent->subject3 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade3" id="">
-                                      <option value="{{ $view_singlstudent->grade3 }}">{{ $view_singlstudent->grade3 }}</option>
-                
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject4" id="">
-                                      <option value="{{ $view_singlstudent->subject4 }}">{{ $view_singlstudent->subject4 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade4" id="">
-                                  <option value="{{ $view_singlstudent->grade4 }}">{{ $view_singlstudent->grade4 }}</option>
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
-                
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject5" id="">
-                                      <option value="{{ $view_singlstudent->subject5 }}">{{ $view_singlstudent->subject5 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade5" id="">
-                                    <option value="{{ $view_singlstudent->grade5 }}">{{ $view_singlstudent->grade5 }}</option>
-                
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject6" id="">
-                                      <option value="{{ $view_singlstudent->subject6 }}">{{ $view_singlstudent->subject6 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade6" id="">
-                                      <option value="{{ $view_singlstudent->grade6 }}">{{ $view_singlstudent->grade6 }}</option>
-                
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
-                
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject7" id="">
-                                      <option value="{{ $view_singlstudent->subject7 }}">{{ $view_singlstudent->subject7 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade7" id="">
-                                   <option value="{{ $view_singlstudent->grade7 }}">{{ $view_singlstudent->grade7 }}</option>
-                
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
-                
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject8" id="">
-                                      <option value="{{ $view_singlstudent->subject8 }}">{{ $view_singlstudent->subject8 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade8" id="">
-                                   <option value="{{ $view_singlstudent->grade8 }}">{{ $view_singlstudent->grade8 }}</option>
-                
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
-                
-                          <tr>
-                             
-                              <th><div class="form-group">
-                                  <select class="form-control" name="subject9" id="">
-                                      <option value="{{ $view_singlstudent->subject9 }}">{{ $view_singlstudent->subject9 }}</option>
-                                      <option value="Mathematic">Mathematics</option>
-                                      <option value="English Language">English Language</option>
-                                      <option value="Biology">Biology</option>
-                                      <option value="Economics">Economics</option>
-                                      <option value="Literature">Literature</option>
-                                      <option value="Computer Studies">Computer Studies</option>
-                                      <option value="Library Studies">Library Studies</option>
-                                      <option value="Physics">Physics</option>
-                                      <option value=" Chemistry">Chemistry</option>
-                                      <option value="Technical Drawing">Technical Drawin</option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                      <option value="French">French</option>
-                                      <option value="Food and Nutrition">Food and Nutrition</option>
-                                      <option value="C. R. Studies">C. R. Studies</option>
-                                      <option value="Government">Government</option>
-                                      <option value="History">History</option>
-                                      <option value="Geography  Music">Geography</option>
-                                      <option value="Fine Arts">Fine Arts</option>
-                                      <option value="Music">Music</option>
-                                      <option value="Agricultural Science">Commerce</option>
-                                      <option value="Financial Accounting">Financial Accounting</option>
-                                      <option value="Commerce ">Commerce </option>
-                                      <option value="Agricultural Science">Agricultural Science</option>
-                                 </select>
-                              </div></th>
-                              <th><div class="form-group">
-                                  <select class="form-control" name="grade9" id="">
-                                   <option value="{{ $view_singlstudent->grade9 }}">{{ $view_singlstudent->grade9 }}</option>
-                
-                
-                                      <option value="A1">A1</option>
-                                      <option value="A2">A2</option>
-                                      <option value="A3">A3</option>
-                                      <option value="B2">B2</option>
-                                      <option value="B3">B3</option>
-                                      <option value="C4">C4</option>
-                                      <option value="C5">C5</option>
-                                      <option value="C6">C6</option>
-                                      <option value="D7">D7</option>
-                                      <option value="F9">F9</option>
-                                 </select>
-                              </div></th>
-                          </tr>
+                        <table class="table table-bordered">
+                          <thead>
+                              <tr>
+                                  <th>Particulars</th>
+                                  <th>Yes</th>
+                                  <th>No</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Small Pox</td>
+                                  <td>{{ $view_students->smallpox1 }}</td>
+                                  <td>{{ $view_students->smallpox2 }}</td>
+                              </tr>
+
+                              <tr>
+                                  <td>Chicken Pox</td>
+                                  <td>{{ $view_students->chickenpox1 }}</td>
+                                  <td>{{ $view_students->chickenpox2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Polio </td>
+                                  <td>{{ $view_students->polio1 }}</td>
+                                  <td>{{ $view_students->polio2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Tetanus </td>
+                                  <td>{{ $view_students->tetanus1 }}</td>
+                                  <td>{{ $view_students->tetanus2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Tuberculosis </td>
+                                  <td>{{ $view_students->tuber1 }}</td>
+                                  <td>{{ $view_students->tuber2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Mumps </td>
+                                  <td>{{ $view_students->mumps1 }}</td>
+                                  <td>{{ $view_students->mumps2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Rebelia </td>
+                                  <td>{{ $view_students->rebelia1 }}</td>
+                                  <td>{{ $view_students->rebelia2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Hepatitis </td>
+                                  <td>{{ $view_students->hepatitis1 }}</td>
+                                  <td>{{ $view_students->hepatitis2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Meningitis </td>
+                                  <td>{{ $view_students->meningitis1 }}</td>
+                                  <td>{{ $view_students->meningitis2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Whoopingcough </td>
+                                  <td>{{ $view_students->whoopingcough1 }}</td>
+                                  <td>{{ $view_students->whoopingcough2 }}</td>
+                                  
+                              </tr>
+
+                              <tr>
+                                  <td>Diphtheria </td>
+                                  <td>{{ $view_students->diphtheria1 }}</td>
+                                  <td>{{ $view_students->diphtheria2 }}</td>
+                                  
+                                 
+                              </tr>
+                          </tbody>
                       </table>
                       </div>
 
@@ -797,13 +600,13 @@
                          <div class="form-group row">
                            <label for="inputName">Center Name</label>
                            <div class="col-sm-10">
-                             <input type="text" name="name" value="{{ $view_singlstudent->centre_name2 }}" class="form-control" id="inputName" placeholder="First Name">
+                             <input type="text" name="name" value="{{ $view_students->centre_name2 }}" class="form-control" id="inputName" placeholder="First Name">
                            </div>
                          </div>
                          <div class="form-group row">
                            <label for="inputName"> Exam Number</label>
                            <div class="col-sm-10">
-                             <input type="text" name="lastname" value="{{ $view_singlstudent->examnumber2 }}" class="form-control" id="inputName" placeholder="Last Name">
+                             <input type="text" name="lastname" value="{{ $view_students->examnumber2 }}" class="form-control" id="inputName" placeholder="Last Name">
                            </div>
                          </div>
                          
@@ -813,13 +616,13 @@
                          <div class="form-group row">
                            <label for="inputName"> Year Obtain</label>
                            <div class="col-sm-10">
-                             <input type="text" name="name" value="{{ $view_singlstudent->yearobtain2 }}" class="form-control" id="inputName" placeholder="First Name">
+                             <input type="text" name="name" value="{{ $view_students->yearobtain2 }}" class="form-control" id="inputName" placeholder="First Name">
                            </div>
                          </div>
                          <div class="form-group row">
                            <label for="inputName"> Qualification Obtain</label>
                            <div class="col-sm-10">
-                             <input type="text" name="lastname" value="{{ $view_singlstudent->qualiobtain2 }}" class="form-control" id="inputName" placeholder="Last Name">
+                             <input type="text" name="lastname" value="{{ $view_students->qualiobtain2 }}" class="form-control" id="inputName" placeholder="Last Name">
                            </div>
                          </div>
                        </div>
@@ -830,7 +633,7 @@
                                                
                           <th><div class="form-group col-12">
                               <select class="form-control" class="form-control" name="subject11" id="">
-                                  <option value="{{ $view_singlstudent->subject11 }}">{{ $view_singlstudent->subject11 }}</option>
+                                  <option value="{{ $view_students->subject11 }}">{{ $view_students->subject11 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -858,7 +661,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade11" id="">
-                                  <option value="{{ $view_singlstudent->grade11 }}">{{ $view_singlstudent->grade11 }}</option>
+                                  <option value="{{ $view_students->grade11 }}">{{ $view_students->grade11 }}</option>
                                   <option value="A1">A1</option>
                                   <option value="A2">A2</option>
                                   <option value="A3">A3</option>
@@ -876,7 +679,7 @@
                          
                           <th><div class="form-group col-12">
                               <select class="form-control" name="subject12" id="">
-                                  <option value="{{ $view_singlstudent->subject12 }}">{{ $view_singlstudent->subject12 }}</option>
+                                  <option value="{{ $view_students->subject12 }}">{{ $view_students->subject12 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -904,7 +707,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade12" id="">
-                               <option value="{{ $view_singlstudent->grade12 }}">{{ $view_singlstudent->grade12 }}</option>
+                               <option value="{{ $view_students->grade12 }}">{{ $view_students->grade12 }}</option>
 
                                   <option value="A1">A1</option>
                                   <option value="A2">A2</option>
@@ -924,7 +727,7 @@
                          
                           <th><div class="form-group col-12">
                               <select class="form-control" name="subject13" id="">
-                                  <option value="{{ $view_singlstudent->subject13 }}">{{ $view_singlstudent->subject13 }}</option>
+                                  <option value="{{ $view_students->subject13 }}">{{ $view_students->subject13 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -952,7 +755,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade13" id="">
-                               <option value="{{ $view_singlstudent->grade13 }}">{{ $view_singlstudent->grade13 }}</option>
+                               <option value="{{ $view_students->grade13 }}">{{ $view_students->grade13 }}</option>
 
                                   <option value="A1">A1</option>
                                   <option value="A2">A2</option>
@@ -971,7 +774,7 @@
                          
                           <th><div class="form-group col-12">
                               <select class="form-control" name="subject14" id="">
-                                  <option value="{{ $view_singlstudent->subject14 }}">{{ $view_singlstudent->subject14 }}</option>
+                                  <option value="{{ $view_students->subject14 }}">{{ $view_students->subject14 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -999,7 +802,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade14" id="">
-                                <option value="{{ $view_singlstudent->grade14 }}">{{ $view_singlstudent->grade14 }}</option>
+                                <option value="{{ $view_students->grade14 }}">{{ $view_students->grade14 }}</option>
 
                                   <option value="A1">A1</option>
                                   <option value="A2">A2</option>
@@ -1019,7 +822,7 @@
                          
                           <th><div class="form-group col-12">
                               <select class="form-control" name="subject15" id="">
-                                  <option value="{{ $view_singlstudent->subject15 }}">{{ $view_singlstudent->subject15 }}</option>
+                                  <option value="{{ $view_students->subject15 }}">{{ $view_students->subject15 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -1047,7 +850,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade15" id="">
-                                 <option value="{{ $view_singlstudent->grade15 }}">{{ $view_singlstudent->grade15 }}</option>
+                                 <option value="{{ $view_students->grade15 }}">{{ $view_students->grade15 }}</option>
 
                                   <option value="A1">A1</option>
                                   <option value="A2">A2</option>
@@ -1066,7 +869,7 @@
                          
                           <th><div class="form-group col-12">
                               <select class="form-control" name="subject16" id="">
-                                  <option value="{{ $view_singlstudent->subject16 }}">{{ $view_singlstudent->subject16 }}</option>
+                                  <option value="{{ $view_students->subject16 }}">{{ $view_students->subject16 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -1094,7 +897,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade16" id="">
-                              <option value="{{ $view_singlstudent->grade16 }}">{{ $view_singlstudent->grade16 }}</option>
+                              <option value="{{ $view_students->grade16 }}">{{ $view_students->grade16 }}</option>
 
                                   <option value="A1">A1</option>
                                   <option value="A2">A2</option>
@@ -1114,7 +917,7 @@
                          
                           <th><div class="form-group col-12">
                               <select class="form-control" name="subject17" id="">
-                                  <option value="{{ $view_singlstudent->subject17 }}">{{ $view_singlstudent->subject17 }}</option>
+                                  <option value="{{ $view_students->subject17 }}">{{ $view_students->subject17 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -1142,7 +945,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade17" id="">
-                                <option value="{{ $view_singlstudent->grade17 }}">{{ $view_singlstudent->grade17 }}</option>
+                                <option value="{{ $view_students->grade17 }}">{{ $view_students->grade17 }}</option>
 
                                   <option value="A1">A1</option>
                                   <option value="A2">A2</option>
@@ -1162,7 +965,7 @@
                          
                           <th><div class="form-group col-12">
                               <select class="form-control" name="subject18" id="">
-                                  <option value="{{ $view_singlstudent->subject18 }}">{{ $view_singlstudent->subject18 }}</option>
+                                  <option value="{{ $view_students->subject18 }}">{{ $view_students->subject18 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -1190,7 +993,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade18" id="">
-                                <option value="{{ $view_singlstudent->grade18 }}">{{ $view_singlstudent->grade18 }}</option>
+                                <option value="{{ $view_students->grade18 }}">{{ $view_students->grade18 }}</option>
 
                                   <option value="A1">A1</option>
                                   <option value="A2">A2</option>
@@ -1210,7 +1013,7 @@
                          
                           <th><div class="form-group col-12">
                               <select class="form-control" name="subject19" id="">
-                                  <option value="{{ $view_singlstudent->subject19 }}">{{ $view_singlstudent->subject19 }}</option>
+                                  <option value="{{ $view_students->subject19 }}">{{ $view_students->subject19 }}</option>
                                   <option value="Mathematic">Mathematics</option>
                                   <option value="English Language">English Language</option>
                                   <option value="Biology">Biology</option>
@@ -1238,7 +1041,7 @@
                           </div></th>
                           <th><div class="form-group col-12">
                               <select class="form-control" name="grade19" id="">
-                                  <option value="{{ $view_singlstudent->grade19 }}">{{ $view_singlstudent->grade19 }}</option>
+                                  <option value="{{ $view_students->grade19 }}">{{ $view_students->grade19 }}</option>
 
 
                                   <option value="A1">A1</option>

@@ -9,14 +9,17 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ClassnameController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\MainsliderController;
 
 use App\Models\Team;
 use App\Models\Event;
 use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Facility;
+use App\Models\Mainslider;
 
 
 /*TeamController
@@ -35,8 +38,9 @@ Route::get('/', function () {
     $view_teams = Team::where('status', 'approved')->get();
     $view_events = Event::latest()->where('status', 'approved')->get();
     $view_blogs = Blog::latest()->where('status', 'approved')->get();
+    $view_sliders = Mainslider::orderby('created_at', 'ASC')->get();
 
-    return view('welcome', compact('view_teams', 'view_events', 'view_blogs'));
+    return view('welcome', compact('view_sliders', 'view_teams', 'view_events', 'view_blogs'));
 });
 
 Route::get('/ourevents', function () {
@@ -95,7 +99,22 @@ Route::get('/teacherform', function () {
     return view('pages.teacherform');
 });
 
+Route::get('/admission', function () {
 
+    return view('pages.admission');
+});
+
+
+Route::get('/printadmissionform/{ref_no}', [UserController::class, 'printadmissionform'])->name('printadmissionform');
+Route::put('/addmedicalsdadmmin/{ref_no}', [UserController::class, 'addmedicalsdadmmin'])->name('addmedicalsdadmmin');
+Route::put('/updateaddthirdondadmmin/{ref_no}', [UserController::class, 'updateaddthirdondadmmin'])->name('updateaddthirdondadmmin');
+Route::post('/addsecondadmmin/{ref_no}', [UserController::class, 'addsecondadmmin'])->name('addsecondadmmin');
+Route::get('/admission/medicalreports/{ref_no}', [UserController::class, 'medicalreports'])->name('medicalreports');
+Route::get('/admission/secondregistration/{ref_no}', [UserController::class, 'secondregistration'])->name('secondregistration');
+Route::get('/admission/thirdregistration/{ref_no}', [UserController::class, 'thirdregistration'])->name('thirdregistration');
+
+Route::post('/createadmission', [UserController::class, 'createadmission'])->name('createadmission');
+Route::get('/admission/admissionform/{slug}', [StudycenterController::class, 'admissionform'])->name('admissionform');
 Route::post('/createteacher', [UserController::class, 'createteacher'])->name('createteacher');
 Route::get('/viewsingleevent/{ref_no}', [EventController::class, 'viewsingleevent'])->name('viewsingleevent');
 Route::get('/viewsinglemember/{ref_no}', [TeamController::class, 'viewsinglemember'])->name('viewsinglemember');
@@ -115,7 +134,13 @@ Route::prefix('admin')->name('admin.')->group(function() {
     
     Route::middleware(['auth:admin'])->group(function() {
         
-        Route::get('/studycenter', [StudycenterController::class, 'studycenter'])->name('studycenter');
+        Route::get('/classesdelete/{id}', [ClassnameController::class, 'classesdelete'])->name('classesdelete');
+        Route::put('/updateclass/{id}', [ClassnameController::class, 'updateclass'])->name('updateclass');
+        Route::get('/editclasses/{id}', [ClassnameController::class, 'editclasses'])->name('editclasses');
+        Route::post('/createclasses', [ClassnameController::class, 'createclasses'])->name('createclasses');
+        Route::get('/viewclassestables', [ClassnameController::class, 'viewclassestables'])->name('viewclassestables');
+        Route::get('/addclass', [ClassnameController::class, 'addclass'])->name('addclass');
+        Route::get('/studycenter1', [StudycenterController::class, 'studycenter1'])->name('studycenter1');
         Route::post('/createstudycenter', [StudycenterController::class, 'createstudycenter'])->name('createstudycenter');
         Route::get('/studycentertables', [StudycenterController::class, 'studycentertables'])->name('studycentertables');
         Route::get('/studycentapproved/{id}', [StudycenterController::class, 'studycentapproved'])->name('studycentapproved');
@@ -168,9 +193,37 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::put('/updatefacility/{id}', [FacilityController::class, 'updatefacility'])->name('updatefacility');
         Route::get('/facilitydelete/{id}', [FacilityController::class, 'facilitydelete'])->name('facilitydelete');
         
+        Route::get('/viewmainslider', [MainsliderController::class, 'viewmainslider'])->name('viewmainslider');
+        Route::get('/addmainslider', [MainsliderController::class, 'addmainslider'])->name('addmainslider');
+        Route::post('/createteslider', [MainsliderController::class, 'createteslider'])->name('createteslider');
+        Route::get('/slideredit/{id}', [MainsliderController::class, 'slideredit'])->name('slideredit');
+        Route::put('/updateslider/{id}', [MainsliderController::class, 'updateslider'])->name('updateslider');
+        Route::get('/slideredelete/{id}', [MainsliderController::class, 'slideredelete'])->name('slideredelete');
         
-
-
+        Route::get('/adminprogress', [UserController::class, 'adminprogress'])->name('adminprogress');
+        Route::get('/viewstudents/{ref_no}', [UserController::class, 'viewstudents'])->name('viewstudents');
+        Route::get('/editstudent/{id}', [UserController::class, 'editstudent'])->name('editstudent');
+        Route::put('/updateadmission/{ref_no}', [UserController::class, 'updateadmission'])->name('updateadmission');
+        Route::get('/rejectstudent/{ref_no}', [UserController::class, 'rejectstudent'])->name('rejectstudent');
+        
+        Route::get('rejectedstudent', [UserController::class, 'rejectedstudent'])->name('rejectedstudent');
+        Route::get('studentsapprove/{ref_no}', [UserController::class, 'studentsapprove'])->name('studentsapprove');
+        Route::get('suspendstudent/{ref_no}', [UserController::class, 'suspendstudent'])->name('suspendstudent');
+        Route::get('suspendstudents', [UserController::class, 'suspendstudents'])->name('suspendstudents');
+        Route::get('studentsaddmit/{ref_no}', [UserController::class, 'studentsaddmit'])->name('studentsaddmit');
+        Route::get('admittedstudents', [UserController::class, 'admittedstudents'])->name('admittedstudents');
+        Route::get('allstudents', [UserController::class, 'allstudents'])->name('allstudents');
+        Route::get('deletestudent/{ref_no}', [UserController::class, 'deletestudent'])->name('deletestudent');
+        Route::get('/addregno/{id}', [UserController::class, 'addregno'])->name('addregno');
+        Route::put('/addingregno/{id}', [UserController::class, 'addingregno'])->name('addingregno');
+        Route::get('/studentpdf/{ref_no}', [UserController::class, 'studentpdf'])->name('studentpdf');
+        Route::get('/medicalspdf/{ref_no}', [UserController::class, 'medicalspdf'])->name('medicalspdf');
+        Route::get('/allstudentpdf', [UserController::class, 'allstudentpdf'])->name('allstudentpdf');
+        Route::get('/allcrechepdf', [UserController::class, 'allcrechepdf'])->name('allcrechepdf');
+        Route::get('/allnurserypdf', [UserController::class, 'allnurserypdf'])->name('allnurserypdf');
+        Route::get('/allprimarypdf', [UserController::class, 'allprimarypdf'])->name('allprimarypdf');
+        Route::get('/allhighschpdf', [UserController::class, 'allhighschpdf'])->name('allhighschpdf');
+        
 
         
         Route::get('/addcources', [CourseController::class, 'addcources'])->name('addcources');
@@ -250,34 +303,22 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/coursedit/{slug}', [CourseController::class, 'coursedit'])->name('coursedit');
         Route::get('/coursedelete/{slug}', [CourseController::class, 'coursedelete'])->name('coursedelete');
         Route::get('viewsfees/{ref_no}', [StudentController::class, 'viewsfees'])->name('viewsfees');
-        Route::get('/addregno/{id}', [StudentController::class, 'addregno'])->name('addregno');
-        Route::put('/addingregno/{id}', [StudentController::class, 'addingregno'])->name('addingregno');
+
         Route::get('/viewallpayment', [ProgramregistrationController::class, 'viewallpayment'])->name('viewallpayment');
         Route::get('/viewsinglepayment/{id}', [ProgramregistrationController::class, 'viewsinglepayment'])->name('viewsinglepayment');
         Route::get('/confirmpayment/{id}', [ProgramregistrationController::class, 'confirmpayment']);
         Route::get('/printpdf', [ProgramregistrationController::class, 'printpdf'])->name('printpdf');
         Route::get('/deletepayment/{slug}', [ProgramregistrationController::class, 'deletepayment'])->name('deletepayment');
         Route::get('/printsinglepaymentspdf/{slug}', [ProgramregistrationController::class, 'printsinglepaymentspdf'])->name('printsinglepaymentspdf');
-        Route::get('adminprogress', [StudentController::class, 'adminprogress'])->name('adminprogress');
-        Route::get('/editstudent/{id}', [StudentController::class, 'editstudent'])->name('editstudent');
         Route::get('/studentit/{ref_no}', [StudentController::class, 'studentit'])->name('studentit');
         Route::get('/viewstudents/{surname}', [StudentController::class, 'viewstudents'])->name('viewstudents');
-        Route::get('rejectedstudent', [StudentController::class, 'rejectedstudent'])->name('rejectedstudent');
-        Route::get('studentsapprove/{surname}', [StudentController::class, 'studentsapprove'])->name('studentsapprove');
-        Route::get('suspendstudent/{surname}', [StudentController::class, 'suspendstudent'])->name('suspendstudent');
-        Route::get('suspendstudents', [StudentController::class, 'suspendstudents'])->name('suspendstudents');
         
-        Route::get('studentsaddmit/{ref_no}', [StudentController::class, 'studentsaddmit'])->name('studentsaddmit');
         Route::get('/certregcourses',[RegistercoursebystudentController::class, 'certregcourses'])->name('certregcourses');
         Route::get('/view/{id}',[RegistercoursebystudentController::class, 'view'])->name('view');
         Route::get('/deleteprogcoursetud/{id}', [RegistercoursebystudentController::class, 'deleteprogcoursetud'])->name('deleteprogcoursetud');
-        
-        Route::get('admittedstudents', [StudentController::class, 'admittedstudents'])->name('admittedstudents');
-        Route::get('allstudents', [StudentController::class, 'allstudents'])->name('allstudents');
-        Route::get('deletestudent/{surname}', [StudentController::class, 'deletestudent'])->name('deletestudent');
+       
         Route::get('approvedstudents', [StudentController::class, 'approvedstudents'])->name('approvedstudents');
 
-        Route::get('/rejectstudent/{username}', [StudentController::class, 'rejectstudent'])->name('rejectstudent');
         Route::get('/contactdelete/{id}', [ContactController::class, 'contactdelete'])->name('contactdelete');
 
         Route::get('/legalcontact', [VisitController::class, 'legalcontact'])->name('legalcontact');
@@ -331,6 +372,20 @@ Route::prefix('admin')->name('admin.')->group(function() {
         
        
     });
+});
+
+
+
+
+Route::middleware('auth')->group(function () {
+    
+    Route::get('/createcontact', [ContactController::class, 'createcontact'])->name('createcontact');
+    Route::get('/addevents', [EventController::class, 'addevents'])->name('addevents');
+    Route::get('/addimagesadmin1/{id}', [BusinessController::class, 'addimagesadmin1'])->name('addimagesadmin1');
+    Route::get('/addimagesadmin1/{id}', [BusinessController::class, 'addimagesadmin1'])->name('addimagesadmin1');
+
+
+
 });
 
 

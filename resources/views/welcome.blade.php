@@ -4,13 +4,14 @@
 	<!--Main Slider-->
     <section class="main-slider style-four">
         <div class="main-slider-carousel owl-carousel owl-theme">
-
-            <div class="slide" style="background-image:url(images/main-slider/sch11.jpg);  background-size: cover; background-repeat: no-repeat; background-position: center;">
+			@foreach ($view_sliders as $view_slider)
+				
+            <div class="slide" style="background-image:url({{ URL::asset("/public/../$view_slider->images")}});  background-size: cover; background-repeat: no-repeat; background-position: center;">
                 <div class="auto-container">
 					<div class="content">
 						<div class="title">BRIXTONN SCHOOLS</div>
-						<h1>BRIXTONN <br> SCHOOLS</h1>
-						<div class="text">Excellence through creativity</div>
+						<h1>BRIXTONN <br> SCHOOLS, <span style="text-transform: uppercase; color: #ffff">{{ $view_slider->centername }}</span></h1>
+						<div class="text">{{ $view_slider->facts }}</div>
 						<div class="link-box">
 							<a href="contact" class="theme-btn btn-style-twelve">Let’s start now <span class="fa fa-angle-right"></span></a>
 							<a href="services" class="theme-btn btn-style-thirteen">Our services <span class="fa fa-angle-right"></span></a>
@@ -18,53 +19,9 @@
 					</div>
                 </div>
             </div>
-
-
-			<div class="slide" style="background-image:url(images/main-slider/brix.jpg);  background-size: cover; background-repeat: no-repeat; background-position: center;">
-                <div class="auto-container">
-					<div class="content">
-						<div class="title">BRIXTONN SCHOOLS</div>
-						<h1>BRIXTONN <br> SCHOOLS</h1>
-						<div class="text">Excellence through creativity</div>
-						<div class="link-box">
-							<a href="contact" class="theme-btn btn-style-twelve">Let’s start now <span class="fa fa-angle-right"></span></a>
-							<a href="services" class="theme-btn btn-style-thirteen">Our services <span class="fa fa-angle-right"></span></a>
-						</div>
-					</div>
-                </div>
-            </div>
-
-
-            <div class="slide" style="background-image:url(images/main-slider/brch4.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
-                <div class="auto-container">
-					<div class="content">
-						<div class="title">BRIXTONN SCHOOLS</div>
-						<h1>BRIXTONN <br> SCHOOLS</h1>
-						<div class="text">Excellence through creativity</div>
-						<div class="link-box">
-							<a href="contact" class="theme-btn btn-style-twelve">Let’s start now <span class="fa fa-angle-right"></span></a>
-							<a href="services" class="theme-btn btn-style-thirteen">Our services <span class="fa fa-angle-right"></span></a>
-						</div>
-					</div>
-                </div>
-            </div>
-
-            <div class="slide" style="background-image:url(images/main-slider/bri5.jpg); background-size: cover; background-repeat: no-repeat; background-position: center;">
-                <div class="auto-container">
-					<div class="content">
-						<div class="title">BRIXTONN SCHOOLS</div>
-						<h1>BRIXTONN <br> SCHOOLS</h1>
-						<div class="text">Quality And Well-rounded Education.</div>
-						<div class="link-box">
-							<a href="contact" class="theme-btn btn-style-twelve">Let’s start now <span class="fa fa-angle-right"></span></a>
-							<a href="services" class="theme-btn btn-style-thirteen">Our services <span class="fa fa-angle-right"></span></a>
-						</div>
-					</div>
-                </div>
-            </div>
+			@endforeach
 
 		</div>
-		<!--End Slide Info Boxed-->
 
     </section>
     <!--End Main Slider-->

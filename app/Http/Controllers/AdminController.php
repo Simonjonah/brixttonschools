@@ -85,7 +85,7 @@ class AdminController extends Controller
             'studycenter' => ['required', 'string'],
             'images' => 'nullable|mimes:jpg,png,jpeg'
         ]);
-        
+       // dd($request->all());
         if ($request->hasFile('images')){
 
             $file = $request['images'];

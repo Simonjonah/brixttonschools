@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('studycenters', function (Blueprint $table) {
             $table->id();
             $table->string('centername');
+            $table->string('address');
+            $table->string('section');
+            $table->string('slug')->nullable();
             $table->string('status')->nullable();
-
             $table->timestamps();
         });
     }
