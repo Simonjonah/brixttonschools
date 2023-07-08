@@ -123,6 +123,8 @@
                       <select required class="form-control" type="text" name="section">
                         <option value="{{ $edit_students->section }}">{{ $edit_students->section }}</option>
                         <option value="Creche">Creche</option>
+                        <option value="Pre-School">Pre-School</option>
+                        <option value="Preparatory">Preparatory</option>
                         <option value="Nursery">Nursery</option>
                         <option value="Primary">Primary</option>
                         <option value="High School">High School</option>

@@ -118,7 +118,8 @@
 							<h5>Section </h5>
 							<select required class="form-control" type="text" name="section">
 								<option value="Creche">Creche</option>
-								<option value="Pre-primary">Pre-primary</option>
+								<option value="Pre-School">Pre-School</option>
+								<option value="Preparatory">Preparatory</option>
 								<option value="Nursery">Nursery</option>
 								<option value="Primary">Primary</option>
 								<option value="High School">High School</option>

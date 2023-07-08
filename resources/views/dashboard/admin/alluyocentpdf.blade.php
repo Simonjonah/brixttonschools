@@ -47,9 +47,7 @@
           Nigeria 
           @endif
           <br>
-          {{-- San Francisco, CA 94107<br>
-          Phone: (804) 123-5432<br>
-          Email: info@almasaeedstudio.com --}}
+         
         </address>
       </div>
      
@@ -61,9 +59,8 @@
     <!-- /.row -->
 
     <div class="row">
-       
         <div class="col-12 table-responsive">
-            <h3 style="text-align: center">All High School Students</h3>
+            <h3 style="text-align: center">List of High School Students in Uyo Center</h3>
           <table class="table table-bordered">
             <thead>
             <tr>
@@ -80,18 +77,18 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($printallhigh_students as $printallhigh_student)
+            @foreach ($printall_uyocenters as $printall_uyocenter)
             <tr>
-                <td>{{ $printallhigh_student->surname }}</td>
-                <td>{{ $printallhigh_student->fname }}</td>
-                <td>{{ $printallhigh_student->middlename }}</td>
-                <td>{{ $printallhigh_student->classname }}</td>
-                <td>{{ $printallhigh_student->gender }}</td>
-                <td>{{ $printallhigh_student->centername }}</td>
-                <td>{{ $printallhigh_student->section }}</td>
-                <td>{{ $printallhigh_student->ref_no }}</td>
-                <td>{{ $printallhigh_student->regnumber }}</td>
-                <td>{{ $printallhigh_student->created_at->format('D d, M Y, H:i')}}</td>
+                <td>{{ $printall_uyocenter->surname }}</td>
+                <td>{{ $printall_uyocenter->fname }}</td>
+                <td>{{ $printall_uyocenter->middlename }}</td>
+                <td>{{ $printall_uyocenter->classname }}</td>
+                <td>{{ $printall_uyocenter->gender }}</td>
+                <td>{{ $printall_uyocenter->centername }}</td>
+                <td>{{ $printall_uyocenter->section }}</td>
+                <td>{{ $printall_uyocenter->ref_no }}</td>
+                <td>{{ $printall_uyocenter->regnumber }}</td>
+                <td>{{ $printall_uyocenter->created_at->format('D d, M Y, H:i')}}</td>
               </tr>
             @endforeach
             

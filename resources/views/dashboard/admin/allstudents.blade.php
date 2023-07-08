@@ -47,6 +47,7 @@
                     <th>Actions</th>
 
                     <th>Reg No</th>
+                    <th>Ref. No</th>
                     <th>Edit</th>
                     <th>Reject</th>
                     <th>Assigned </th>
@@ -99,21 +100,13 @@
                           <li class="dropdown-item"><a href="{{ url('admin/alluyocentpdf') }}">Print All Uyo Center</a></li>
                           <li class="dropdown-item"><a href="{{ url('admin/allabujapdf') }}">Print All Abuja Center</a></li>
                           <li class="dropdown-item"><a href="{{ url('admin/allstudentpdf') }}">Print All Student</a></li>
-                          {{-- <li class="dropdown-item"><a href="#">Something else here</a></li> --}}
-                          {{-- <li class="dropdown-divider"></li>
-                          <li class="dropdown-item"><a style="color: red" href="#">Section Tables</a></li>
-                          <li class="dropdown-item"><a href="{{ url('admin/allcrechtables') }}">Creche Table</a></li>
-                          <li class="dropdown-item"><a href="{{ url('admin/allnurserytables') }}">Nursery Table</a></li>
-                          <li class="dropdown-item"><a href="{{ url('admin/primarytables') }}">Primary Table</a></li>
-                          <li class="dropdown-item"><a href="{{ url('admin/allhightables') }}">High School</a></li> --}}
-                          {{-- <li class="dropdown-divider"></li>
-                          <li class="dropdown-divider"></li> --}}
-                          {{-- <li class="dropdown-item"><a href="#">Uyo Center</a></li>
-                          <li class="dropdown-item"><a href="#">Abuja Center</a></li> --}}
+                         
                         </ul>
                       </div></td>
 
                       <td>{{ $all_student->regnumber }}</td>
+                      <td>{{ $all_student->ref_no }}</td>
+
                          <td><a href="{{ url('admin/editstudent/'.$all_student->ref_no) }}"
                           class='btn btn-info'>
                            <i class="far fa-edit"></i>
@@ -139,12 +132,7 @@
                         class='btn btn-danger'>
                          <i class="far fa-trash-alt"></i>
                      </a></td>
-                     {{-- <td>@if ($all_student->student_identity == null)
-                      <span class="badge badge-danger">Not Send</span>
-                     @elseif($all_student->student_identity == 'IT SEND')
-                     <span class="badge badge-info"> Send For I.T</span>
                      
-                     @endif</td> --}}
                      <td>{{ $all_student->created_at->format('D d, M Y, H:i')}}</td>
 
                       </tr>
@@ -165,6 +153,8 @@
                       <th>Actions</th>
   
                       <th>Reg No</th>
+                      <th>Ref. No</th>
+
                       <th>Edit</th>
                       <th>Reject</th>
                       <th>Assigned </th>

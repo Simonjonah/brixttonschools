@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 
-<title>Brixttonn Schools </title>
+<title>Brixtonn Schools - Nigeria </title>
 
 
 

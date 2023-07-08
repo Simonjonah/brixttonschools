@@ -206,7 +206,7 @@
                                 <td><img style="width: 50px; height: 50px;" class="profile-user-img img-fluid"
                                     src="{{ URL::asset("/public/../$addthid_admission->immune")}}"
                                     alt="User profile picture"></td>
-                    			<input required class="form-control" type="file" name="immune">
+                    			<input class="form-control" type="file" name="immune">
 							</div>
 
                             <p><b>Note</b> that we have a sick Bay and Nurse on duty but no Drugs will be administered to your child except paiin relievers</p>

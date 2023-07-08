@@ -208,6 +208,118 @@
                   <p>All Students</p>
                 </a>
               </li>
+
+
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon far fa-plus-square"></i>
+                  <p>
+                    Uyo Center 
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                 <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewalluyo') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>View All Uyo</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewpreparatory') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Uyo Preperatory</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewpreschool') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Uyo Pre-School</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewnursery') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Uyo Nursery</p>
+                    </a>
+                  </li>
+
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewprimary') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Uyo Primary</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewhighschool') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Uyo High School</p>
+                    </a>
+                  </li>
+                </ul>
+              </li> 
+
+
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon far fa-plus-square"></i>
+                  <p>
+                    Abuja Center 
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                 <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewallabuja') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>View All Abuja</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewabujapreparatory') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Abj Preperatory</p>
+                    </a>
+                  </li>
+
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.abujapreschool') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p> Abj Pre-School</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewabujanursery') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Abj Nursery</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewabujaprimary') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Abj Primary</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{ route('admin.viewabjhighschool') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Abj High School</p>
+                    </a>
+                  </li>
+                  
+
+                </ul>
+              </li> 
+
+
             </ul>
           </li>
           <li class="nav-item has-treeview">
@@ -472,13 +584,6 @@
                   <p>View Programs</p>
                 </a>
               </li>
-
-              {{-- <li class="nav-item">
-                <a href="{{ route('admin.viewprofessional') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Professional Programs</p>
-                </a>
-              </li> --}}
               
             </ul>
           </li>

@@ -223,8 +223,34 @@ Route::prefix('admin')->name('admin.')->group(function() {
         Route::get('/allnurserypdf', [UserController::class, 'allnurserypdf'])->name('allnurserypdf');
         Route::get('/allprimarypdf', [UserController::class, 'allprimarypdf'])->name('allprimarypdf');
         Route::get('/allhighschpdf', [UserController::class, 'allhighschpdf'])->name('allhighschpdf');
+        Route::get('/viewalluyo', [UserController::class, 'viewalluyo'])->name('viewalluyo');
+        Route::get('/alluyocrechepdf', [UserController::class, 'alluyocrechepdf'])->name('alluyocrechepdf');
+        Route::get('/alluyopreperatorypdf', [UserController::class, 'alluyopreperatorypdf'])->name('alluyopreperatorypdf');
+        Route::get('/allpreschoolpdf', [UserController::class, 'allpreschoolpdf'])->name('allpreschoolpdf');
+        Route::get('/alluyonurserypdf', [UserController::class, 'alluyonurserypdf'])->name('alluyonurserypdf');
+        Route::get('/alluyoprimarypdf', [UserController::class, 'alluyoprimarypdf'])->name('alluyoprimarypdf');
+        Route::get('/alluyohighschpdf', [UserController::class, 'alluyohighschpdf'])->name('alluyohighschpdf');
+        Route::get('/alluyocentpdf', [UserController::class, 'alluyocentpdf'])->name('alluyocentpdf');
+        Route::get('/viewpreparatory', [UserController::class, 'viewpreparatory'])->name('viewpreparatory');
+        Route::get('/viewpreschool', [UserController::class, 'viewpreschool'])->name('viewpreschool');
+        Route::get('/viewnursery', [UserController::class, 'viewnursery'])->name('viewnursery');
+        Route::get('/viewprimary', [UserController::class, 'viewprimary'])->name('viewprimary');
+        Route::get('/viewhighschool', [UserController::class, 'viewhighschool'])->name('viewhighschool');
+        Route::get('/viewallabuja', [UserController::class, 'viewallabuja'])->name('viewallabuja');
+        Route::get('/allabujacrechepdf', [UserController::class, 'allabujacrechepdf'])->name('allabujacrechepdf');
+        Route::get('/allabujapdf', [UserController::class, 'allabujapdf'])->name('allabujapdf');
+        Route::get('/allabujapreperatorypdf', [UserController::class, 'allabujapreperatorypdf'])->name('allabujapreperatorypdf');
+        Route::get('/allabujapreschoolpdf', [UserController::class, 'allabujapreschoolpdf'])->name('allabujapreschoolpdf');
+        Route::get('/allabujanurserypdf', [UserController::class, 'allabujanurserypdf'])->name('allabujanurserypdf');
+        Route::get('/allabujaprimarypdf', [UserController::class, 'allabujaprimarypdf'])->name('allabujaprimarypdf');
+        Route::get('/allabujahighschpdf', [UserController::class, 'allabujahighschpdf'])->name('allabujahighschpdf');
+        Route::get('/viewabujapreparatory', [UserController::class, 'viewabujapreparatory'])->name('viewabujapreparatory');
+        Route::get('/abujapreschool', [UserController::class, 'abujapreschool'])->name('abujapreschool');
+        Route::get('/viewabujanursery', [UserController::class, 'viewabujanursery'])->name('viewabujanursery');
+        Route::get('/viewabujaprimary', [UserController::class, 'viewabujaprimary'])->name('viewabujaprimary');
+        Route::get('/viewabjhighschool', [UserController::class, 'viewabjhighschool'])->name('viewabjhighschool');
         
-
+        
         
         Route::get('/addcources', [CourseController::class, 'addcources'])->name('addcources');
         Route::get('/addnidnetcoursesl1stsem', [RegistercourseController::class, 'addnidnetcoursesl1stsem'])->name('addnidnetcoursesl1stsem');

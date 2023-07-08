@@ -8,7 +8,7 @@
 			<div class="content">
 				<h1>Academics<span> Facilities</span></h1>
 				<ul class="page-breadcrumb">
-					<li><a href="<?php echo HOME; ?>home">Home</a></li>
+					<li><a href="home">Home</a></li>
 					<li>Facilities</li>
 					<li>Medicals Facilities</li>
 				</ul>

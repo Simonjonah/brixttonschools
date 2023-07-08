@@ -219,6 +219,9 @@ class UserController extends Controller
             $file = $request['immune'];
             $filename = 'SimonJonah-' . time() . '.' . $file->getClientOriginalExtension();
             $path = $request->file('immune')->storeAs('resourceimages', $filename);
+        }else{
+
+            $path = 'noimage.jpg';
         }
         $addthid_admission['immune'] = $path;
         $addthid_admission->genotype1 = $request->genotype1;
@@ -435,6 +438,187 @@ class UserController extends Controller
         $printallhigh_students = User::where('section', 'High School')->latest()->get();
         return view('dashboard.admin.allhighschpdf', compact('printallhigh_students'));
     }
+
+    public function viewalluyo(){
+        $viewalluyo_students = User::where('centername', 'Uyo')->latest()->get();
+        return view('dashboard.admin.viewalluyo', compact('viewalluyo_students'));
+    }
+
+    public function alluyocrechepdf(){
+        $printalluyo_creches = User::where('centername', 'Uyo')
+        ->where('section', 'Creche')->latest()->get();
+        return view('dashboard.admin.alluyocrechepdf', compact('printalluyo_creches'));
+    }
+
+    public function alluyopreperatorypdf(){
+        $printalluyo_preparatories = User::where('section', 'Preparatory')
+        ->where('centername', 'Uyo')
+        ->latest()->get();
+        return view('dashboard.admin.alluyopreperatorypdf', compact('printalluyo_preparatories'));
+    }
+
+    public function allpreschoolpdf(){
+        $printalluyo_preschools = User::where('centername', 'Uyo')
+        ->where('section', 'Pre-School')->latest()->get();
+        return view('dashboard.admin.allpreschoolpdf', compact('printalluyo_preschools'));
+    }
+    public function alluyonurserypdf(){
+        $printalluyo_nurserys = User::where('centername', 'Uyo')
+        ->where('section', 'Nursery')->latest()->get();
+        return view('dashboard.admin.alluyonurserypdf', compact('printalluyo_nurserys'));
+    }
+    public function alluyoprimarypdf(){
+        $printalluyo_primaries = User::where('centername', 'Uyo')
+        ->where('section', 'Primary')->latest()->get();
+        return view('dashboard.admin.alluyoprimarypdf', compact('printalluyo_primaries'));
+    }
+
+    public function alluyohighschpdf(){
+        $printalluyo_highschools = User::where('centername', 'Uyo')
+        ->where('section', 'High School')->latest()->get();
+        return view('dashboard.admin.alluyohighschpdf', compact('printalluyo_highschools'));
+    }
+
+    public function alluyocentpdf(){
+        $printall_uyocenters = User::where('centername', 'Uyo')->latest()->get();
+        return view('dashboard.admin.alluyocentpdf', compact('printall_uyocenters'));
+    }
+    public function allabujapdf(){
+        $printall_abujacenters = User::where('centername', 'Abuja')->latest()->get();
+        return view('dashboard.admin.allabujapdf', compact('printall_abujacenters'));
+    }
+    
+    public function viewpreparatory(){
+        $display_uyopreparatorys = User::where('centername', 'Uyo')
+        ->where('section', 'Preparatory')
+        ->latest()->get();
+        return view('dashboard.admin.viewpreparatory', compact('display_uyopreparatorys'));
+    }
+    public function viewpreschool(){
+        $display_uyopreschools = User::where('centername', 'Uyo')
+        ->where('section', 'Pre-School')
+        ->latest()->get();
+        return view('dashboard.admin.viewpreschool', compact('display_uyopreschools'));
+    }
+    public function viewnursery(){
+        $display_uyonurserys = User::where('centername', 'Uyo')
+        ->where('section', 'Nursery')
+        ->latest()->get();
+        return view('dashboard.admin.viewnursery', compact('display_uyonurserys'));
+    }
+
+    public function viewprimary(){
+        $display_uyoprimarys = User::where('centername', 'Uyo')
+        ->where('section', 'Primary')
+        ->latest()->get();
+        return view('dashboard.admin.viewprimary', compact('display_uyoprimarys'));
+    }
+    public function viewhighschool(){
+        $display_uyohighschools = User::where('centername', 'Uyo')
+        ->where('section', 'High School')
+        ->latest()->get();
+        return view('dashboard.admin.viewhighschool', compact('display_uyohighschools'));
+    }
+
+    public function viewallabuja(){
+        $display_abujas = User::where('centername', 'Abuja')
+        ->latest()->get();
+        return view('dashboard.admin.viewallabuja', compact('display_abujas'));
+    }
+
+    public function allabujacrechepdf(){
+        $display_abujacrechs = User::where('centername', 'Abuja')
+        ->where('section', 'Creche')
+        ->latest()->get();
+        return view('dashboard.admin.allabujacrechepdf', compact('display_abujacrechs'));
+    }
+
+    public function allabujapreperatorypdf(){
+        $print_allabujapreparatorys = User::where('centername', 'Abuja')
+        ->where('section', 'Preparatory')
+        ->latest()->get();
+        return view('dashboard.admin.allabujapreperatorypdf', compact('print_allabujapreparatorys'));
+    }
+    
+    public function allabujapreschoolpdf(){
+        $print_allabjpreschools = User::where('centername', 'Abuja')
+        ->where('section', 'Pre-School')
+        ->latest()->get();
+        return view('dashboard.admin.allabujapreschoolpdf', compact('print_allabjpreschools'));
+    }
+
+    public function allabujanurserypdf(){
+        $print_allabjnurserys = User::where('centername', 'Abuja')
+        ->where('section', 'Nursery')
+        ->latest()->get();
+        return view('dashboard.admin.allabujanurserypdf', compact('print_allabjnurserys'));
+    }
+
+    public function allabujaprimarypdf(){
+        $print_allabjprimarys = User::where('centername', 'Abuja')
+        ->where('section', 'Primary')
+        ->latest()->get();
+        return view('dashboard.admin.allabujaprimarypdf', compact('print_allabjprimarys'));
+    }
+    public function allabujahighschpdf(){
+        $print_allabjhighschools = User::where('centername', 'Abuja')
+        ->where('section', 'Primary')
+        ->latest()->get();
+        return view('dashboard.admin.allabujahighschpdf', compact('print_allabjhighschools'));
+    }
+
+    public function viewabujapreparatory(){
+        $view_abjpreparatorys = User::where('centername', 'Abuja')
+        ->where('section', 'Preparatory')
+        ->latest()->get();
+        return view('dashboard.admin.viewabujapreparatory', compact('view_abjpreparatorys'));
+    }
+
+    public function abujapreschool(){
+        $view_abjpreschools = User::where('centername', 'Abuja')
+        ->where('section', 'Preparatory')
+        ->latest()->get();
+        return view('dashboard.admin.abujapreschool', compact('view_abjpreschools'));
+    }
+    public function viewabujanursery(){
+        $view_abjnurserys = User::where('centername', 'Abuja')
+        ->where('section', 'Nursery')
+        ->latest()->get();
+        return view('dashboard.admin.viewabujanursery', compact('view_abjnurserys'));
+    }
+
+    public function viewabujaprimary(){
+        $view_abjprimarys = User::where('centername', 'Abuja')
+        ->where('section', 'Nursery')
+        ->latest()->get();
+        return view('dashboard.admin.viewabujaprimary', compact('view_abjprimarys'));
+    }
+
+    
+    public function viewabjhighschool(){
+        $view_abjhighschools = User::where('centername', 'Abuja')
+        ->where('section', 'High School')
+        ->latest()->get();
+        return view('dashboard.admin.viewabjhighschool', compact('view_abjhighschools'));
+    }
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
     
     
     
