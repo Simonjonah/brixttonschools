@@ -84,12 +84,7 @@
                        
                        <span class="badge badge-success">Approved</span>
                        @endif</td>
-                       {{-- <td>@if ($suspend_student->status == 'suspend')
-                        <span class="badge badge-warning"> Suspended</span>
-                      @else
-                      <span class="badge badge-success">Approved</span>
-                      
-                      @endif</td> --}}
+                  
 
                        <th><a href="{{ url('admin/rejectstudent/'.$suspend_student->ref_no) }}" class="btn btn-sm bg-teal">
                         <i class="fas fa-user"></i>

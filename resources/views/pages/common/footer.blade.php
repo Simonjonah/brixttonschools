@@ -17,8 +17,8 @@
 									<div class="text">For additioan information on BRIXTONN SCHOOLS services. Please contact us using the information below.</div>
 									<ul class="list-style-two">
 										<li><span class="icon fa fa-phone"></span> +234 816 7930 965</li>
-										<li><span class="icon fa fa-envelope"></span> info@brixtonn.com.ng</li>
-										<li><span class="icon fa fa-home"></span>30 G Line, Ewet Housing Estate, Uyo <br> Akwa Ibom, Nigeria</li>
+										<li><span class="icon fa fa-envelope"></span> info@brixtonnschools.com.ng</li>
+										<li><span class="icon fa fa-home"></span>Unit 13 F-Line Ewet Housing Estate, Uyo <br> Akwa Ibom, Nigeria</li>
 									</ul>
 								</div>
 							</div>
@@ -102,7 +102,7 @@
 					
 					<!-- Copyright Column -->
 					<div class="copyright-column col-lg-6 col-md-6 col-sm-12">
-						<div class="copyright">2021 &copy; All rights reserved by <a href="#">Simon 08167930965</a></div>
+						<div class="copyright">2021 &copy; All rights reserved by <a href="https://web.facebook.com/?_rdc=1&_rdr">Simon 08167930965</a></div>
 					</div>
 					
 					<!-- Social Column -->

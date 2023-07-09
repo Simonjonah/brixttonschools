@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Classname;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -602,9 +602,38 @@ class UserController extends Controller
         return view('dashboard.admin.viewabjhighschool', compact('view_abjhighschools'));
     }
     
-    
+    public function checkfirst (Request $request){
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'exists:users'],
+            'password' => ['required', 'string', 'min:8']
+        ], [
+            'email.exist'=>'This email does not exist in the admins table'
+        ]);
+        $creds = $request->only('email', 'password');
+        if (Auth::guard('web')->attempt($creds)) {
+            return redirect()->route('web.home')->with('success', 'You have successfully login');
+        }else{
+            return redirect()->route('login')->with('error', 'Failed to login');
+        }
 
-    
+    }
+
+    public function home(){
+
+        return view('dashboard.home');
+    }
+
+    public function profile($ref_no){
+        $view_profile = User::where('ref_no', $ref_no)->first();
+        return view('dashboard.profile', compact('view_profile'));
+    }
+
+    public function logout(){
+        Auth::guard('web')->logout();
+        return redirect('login');
+    }
+
+
     
     
     

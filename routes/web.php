@@ -20,7 +20,7 @@ use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Facility;
 use App\Models\Mainslider;
-
+use App\Models\User;
 
 /*TeamController
 |--------------------------------------------------------------------------
@@ -401,19 +401,26 @@ Route::prefix('admin')->name('admin.')->group(function() {
 });
 
 
+//Route::post('/checkfirst', [UserController::class, 'checkfirst'])->name('checkfirst');
 
 
-Route::middleware('auth')->group(function () {
+Route::prefix('web')->name('web.')->group(function() {
+
+    Route::middleware(['guest:web'])->group(function() {
+        Route::post('/checkfirst', [UserController::class, 'checkfirst'])->name('checkfirst');
+    });
     
-    Route::get('/createcontact', [ContactController::class, 'createcontact'])->name('createcontact');
-    Route::get('/addevents', [EventController::class, 'addevents'])->name('addevents');
-    Route::get('/addimagesadmin1/{id}', [BusinessController::class, 'addimagesadmin1'])->name('addimagesadmin1');
-    Route::get('/addimagesadmin1/{id}', [BusinessController::class, 'addimagesadmin1'])->name('addimagesadmin1');
-
-
-
+    Route::middleware(['auth:web'])->group(function() {
+        Route::get('/home', [UserController::class, 'home'])->name('home');
+        Route::get('/profile/{ref_no}', [UserController::class, 'profile'])->name('profile');
+        // Route::get('/classesdelete/{id}', [ClassnameController::class, 'classesdelete'])->name('classesdelete');
+        // Route::put('/updateclass/{id}', [ClassnameController::class, 'updateclass'])->name('updateclass');
+        
+        Route::get('/logout', [UserController::class, 'logout'])->name('logout'); 
+        
+       
+    });
 });
-
 
 
 Auth::routes();

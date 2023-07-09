@@ -72,9 +72,9 @@
 								<div class="form-group">
 									<h5>Entrylevel</h5>
 									<select name="entrylevel" class="form-control"  id="">
-										<option value="First Term">First Term</option>
-										<option value="Second Term">Second Term</option>
-										<option value="Third Term">Third Term</option>
+										<option value="Pioneer Term">Pioneer Term</option>
+										<option value="Penultimate Term">Penultimate Term</option>
+										<option value="Premium Term">Premium Term</option>
 									</select>
 								</div>
 								<div class="form-group">

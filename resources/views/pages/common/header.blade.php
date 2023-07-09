@@ -47,9 +47,9 @@
                 <div class="inner-container clearfix">
                     <div class="top-left">
                         <ul class="contact-list clearfix">
-                            <li><i class="fa fa-envelope-o"></i>info@gmail.com</li>
-                            <li><i class="fa fa-user"></i><a href="teacheradmin/login">Teacher's Login</a></li>
-							<li><i class="fa fa-map-marker"></i><a href="#"> 30 Ewet Housing, Uyo Akwa Ibom State, Nigeria</a></li>
+                            <li><i class="fa fa-envelope-o"></i>info@brixtonnschools.com.ng</li>
+                            <li><i class="fa fa-user"></i><a href="{{ url('teacher/login') }}">Teacher's Login</a></li>
+							<li><i class="fa fa-phone"></i><a href="#"> +234 808 908 0898</a></li>
                         </ul>
                     </div>
                     
@@ -121,13 +121,7 @@
 										
 									</ul>
 
-									<li class="dropdown"><a href="#">Login</a>
-									<ul>
-										<li><a href="{{ url('pupils/resultlogin') }}">Check Results</a></li> 
-										<li><a href="{{ url('pupils/login') }}">Nursery Login</a></li>
-										 
-										
-									</ul>
+									<li><a href="{{ url('login') }}">Login</a></li> 
 								</li>
 								
 								</li>
@@ -225,14 +219,8 @@
 										
 									</ul>
 								</li>
-								<li class="dropdown"><a href="#">Login</a>
-									<ul>
-										<li><a href="{{ url('pupils/resultlogin') }}">Check Results</a></li> 
-										<li><a href="{{ url('pupils/login') }}">Nursery Login</a></li>
-										<!-- <li><a href="secondary/login">Secondary Login</a></li> -->
-										
-									</ul>
-								</li>
+								<li><a href="{{ url('login') }}">Login</a></li> 
+
 								<li><a href="{{ url('contact') }}">Contact us</a></li>
 								
 								

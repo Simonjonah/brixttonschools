@@ -128,5 +128,7 @@ class TeamController extends Controller
         return view('pages.viewsinglemember', compact('single_teams','all_teams'));
     }
      
+
+    
     
 }
