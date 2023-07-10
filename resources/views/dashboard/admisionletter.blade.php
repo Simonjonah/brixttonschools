@@ -23,13 +23,18 @@
 <div class="wrapper">
   <!-- Main content -->
   <section class="invoice">
-    <h1 style="text-align: center;">IMFI ICT ACADEMY</h1>
-    <h2 style="text-align: center;">The First Innovation Polytechnic</h2>
+    <h1 style="text-align: center;">BRIXTONN SCHOOLS</h1>
+    <h2 style="text-align: center;">Learning through creativity</h2>
+    <p style="text-align: center;">@if (Auth::guard('web')->user()->centername == 'Uyo')
+      Unit 13 F-Line, Ewet Housing Estate, Uyo Akwa Ibom State, Nigeria.
+      @else
+      Asokoro, Abuja
+    @endif</p>
+    
     <!-- title row -->
     <div class="row">
       <div class="col-12">
         <h2 class="page-header">
-            <img src="{{ asset('assets/dist/img/AdminLTELogo.jpg') }}">
         </h2>
       </div>
       <!-- /.col -->
@@ -37,47 +42,31 @@
     <!-- info row -->
     <div class="row invoice-info">
       <div class="col-sm-4 invoice-col">
-        <address>
-            <strong>President:</strong><br>
-            Sir Sunday U Akpan, KJW,<br>
-            B.Sc (Lagos), M.Sc (Birmingham, UK), FCIA, FCPA<br>
-            <strong>Vice President(Resarch & Development)</strong><br>
-            Dr (Mrs) Edu Inam, M.Sc (Uniuyo); Ph.D, (L'brough, UK) Cert. Int'l Devt. (UNU, Japan)<br>
-            <strong>Registrar</strong><br>
-            Mr Ita Akpan<br>
-  
-          </address>
+
       </div>
 
-      <div class="col-sm-4 invoice-col">
+      <div class="col-sm-4 invoice-col text-center">
         <address>
-          Centre for ICT Excellence<br>
+          {{-- Centre for ICT Excellence<br>
           Corporate Menber, Computer Professionals<br>
           (Registration Council of Nigeria)<br>
           Enterprise Research & Development <br>
-          Inspiring Technology University
+          Inspiring Technology University --}}
         </address>
+        <img style="width: 200px; height: 100px; " src="{{ asset('assets/dist/img/AdminLTELogo.jpg') }}">
+
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-4 invoice-col">
+        
       </div>
       <!-- /.col -->
       <div class="col-sm-4 invoice-col">
         <address>
             {{-- <strong>John Doe</strong><br> --}}
-            54 Nsikak Eduok Avenue<br>
-            P.O.Box 1723, Uyo,<br>
-            Akwa Ibom State, Nigeria<br>
-            <b>Email</b> imfinig@yahoo.com <br>
-            <b>Website</b> imfiacademy.edu.ng <br>
-            <b>GSM</b> 0802 823 7116<br>
-  
-          </address>
-      </div>
-      <!-- /.col -->
-      <div class="col-sm-4 invoice-col">
-        <address>
-            {{-- <strong>John Doe</strong><br> --}}
-            {{ Auth::guard('student')->user()->regnumber }}<br>
+            {{-- {{ Auth::guard('web')->user()->regnumber }}<br>
             
-            {{ Auth::guard('student')->user()->surname }}, {{ Auth::guard('student')->user()->fname }} {{ Auth::guard('student')->user()->middlename }} <br>
+            {{ Auth::guard('web')->user()->surname }}, {{ Auth::guard('web')->user()->fname }} {{ Auth::guard('web')->user()->middlename }} <br> --}}
     
             Sir/Madam,
     
@@ -91,8 +80,8 @@
     <div class="row">
       <div class="col-12 table-responsive">
        <h2 style="text-align: center">OFFER OF PROVISIONAL ADMISSION</h2>
-       <p style="text-align: justify">I am pleased to inform you that you have been offered provisional admission to undertake {{ Auth::guard('student')->user()->course_period }} 
-        {{ Auth::guard('student')->user()->course['category'] }} Programme in <strong>{{ Auth::guard('student')->user()->programname }}</strong> with immediate effect from {{ Auth::guard('student')->user()->updated_at->format('D d, M Y') }}
+       <p style="text-align: justify">I am pleased to inform you that you have been offered provisional admission to undertake {{ Auth::guard('web')->user()->course_period }} 
+        {{ Auth::guard('web')->user()->section }} Programme in <strong>{{ Auth::guard('web')->user()->classneme }}</strong> with immediate effect from {{ Auth::guard('web')->user()->updated_at->format('D d, M Y') }}
     </p>
     <p>
       This offer is subject to the verification of your qualifications as submitted by you. If at any time after admission (even after registration) it is discovered that you do not have the requisite qualifications on which your admission was based, you will be required to withdraw from the Academy.
@@ -100,17 +89,21 @@
     <p>If you accept this offer, you should within two weeks of the date of this offer:
 
       <ol>
-        <li>Report immediately to the registrar, IMFI ICT Academy, 54 Nsikak Eduok Avenue, Uyo accepting the offer.</li>
+        <li>Report immediately to the administrator, @if (Auth::guard('web')->user()->centername == 'Uyo')
+          Unit 13 F-Line, Ewet Housing Estate, Uyo Akwa Ibom State, Nigeria.
+          @else
+          Asokoro, Abuja
+        @endif Nigeria accepting the offer.</li>
       </ol>
     </p>
     <p>Please note that registration begins with immediate effect.
-      A copy of the Academy's rules/regulations for students and the fee schedule are herewith attached for information and compliance.
+      A copy of the Academy's rules/regulations for webs and the fee schedule are herewith attached for information and compliance.
     </p>
 
     <p>Yours faithfully, <br>
-      <b><em>For:</em>IMFI Academy</b><br>
-      <b>Mr Ita Akpan</b><br>
-      Ag. Registrar
+      <b><em>For:</em>Brixtonn Schools</b><br>
+      <b>Mr Simon Udo</b><br>
+      Ag. Admin
     </p>
       </div>
       <!-- /.col -->

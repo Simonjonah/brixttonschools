@@ -1,6 +1,6 @@
-@include('dashboard.student.header')
+@include('dashboard.header')
 
-  @include('dashboard.student.sidebar')
+  @include('dashboard.sidebar')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -21,9 +21,13 @@
     </div>
     <!-- /.content-header -->
 
-   @if (Auth::guard('student')->user()->status == null)
-     @include('dashboard.student.firstregistration')
-   @else
+   @if (Auth::guard('web')->user()->status == null)
+     @include('dashboard.firstregistration')
+   @elseif (Auth::guard('web')->user()->status == 'suspend')
+    <h1>{{ Auth::guard('web')->user()->fname }}, You have been suspended</h1>
+    @elseif (Auth::guard('web')->user()->status == 'reject')
+    <h1>{{ Auth::guard('web')->user()->fname }}, You have been rejected</h1>
+    @else
       <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -33,14 +37,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ $countcoureses }}</h3>
+                <h3>44</h3>
 
                 <p>Courses Registered By Me</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="{{ route('student.yourcourse') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -48,14 +52,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ Auth::guard('student')->user()->amount }}<sup style="font-size: 20px"></sup></h3>
+                <h3>{{ Auth::guard('web')->user()->amount }}<sup style="font-size: 20px"></sup></h3>
 
                 <p>School Initial Fees</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="{{ route('student.paymenthistory') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -63,14 +67,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>{{ $countschs }}</h3>
+                <h3>33</h3>
 
                 <p>Other Payments</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="{{ route('student.paymenthistory') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -78,14 +82,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>{{ $countresults }}</h3>
+                <h3>33</h3>
 
                 <p>My Results NID</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              {{-- <a href="{{ route('student.legalcontact') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
+              {{-- <a href="{{ route('web.legalcontact') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -94,7 +98,7 @@
             <!-- small box -->
             <div class="small-box bg-secondary">
               <div class="inner">
-                <h3>{{ $countresult }}</h3>
+                <h3>33</h3>
 
                 <p>Results</p>
               </div>
@@ -102,7 +106,7 @@
                 <i class="ion ion-person"></i>
 
               </div>
-              {{-- <a href="{{ route('student.viewpersonnel') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
+              {{-- <a href="{{ route('web.viewpersonnel') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a> --}}
             </div>
           </div>
           <!-- ./col -->
@@ -130,7 +134,7 @@
             <table class="table m-0">
               <thead>
               <tr>
-                <th>Student ID</th>
+                <th>web ID</th>
                 <th>Surname</th>
                 <th>Firstname</th>
                 <th>Middlename</th>
@@ -141,21 +145,21 @@
               </thead>
               <tbody>
               <tr>
-                <td><a href="studentprofile/{{ Auth::guard('student')->user()->id  }}">{{ Auth::guard('student')->user()->ref_no  }}</a></td>
-                <td>{{ Auth::guard('student')->user()->surname  }}</td>
-                <td>{{ Auth::guard('student')->user()->fname  }}</td>
-                <td>{{ Auth::guard('student')->user()->middlename  }}</td>
-                <td>{{ Auth::guard('student')->user()->regnumber  }}</td>
+                <td><a href="{{ url('web/profile/'.Auth::guard('web')->user()->ref_no)  }}">{{ Auth::guard('web')->user()->ref_no  }}</a></td>
+                <td>{{ Auth::guard('web')->user()->surname  }}</td>
+                <td>{{ Auth::guard('web')->user()->fname  }}</td>
+                <td>{{ Auth::guard('web')->user()->middlename  }}</td>
+                <td>{{ Auth::guard('web')->user()->regnumber  }}</td>
                <td>
-                @if (Auth::guard('student')->user()->status = null)
+                @if (Auth::guard('web')->user()->status = null)
                 <td><span class="badge badge-info">Admission in progress</span></td>
-                @elseif (Auth::guard('student')->user()->status = 'admitted')
+                @elseif (Auth::guard('web')->user()->status = 'admitted')
                 <td><span class="badge badge-success">Admtted</span></td>
-                @elseif (Auth::guard('student')->user()->status = 'reject')
+                @elseif (Auth::guard('web')->user()->status = 'reject')
                 <td><span class="badge badge-danger">Admtted</span></td>
-                @elseif (Auth::guard('student')->user()->status = 'approved')
+                @elseif (Auth::guard('web')->user()->status = 'approved')
                 <td><span class="badge badge-success">Approved</span></td>
-                @elseif (Auth::guard('student')->user()->status = 'suspend')
+                @elseif (Auth::guard('web')->user()->status = 'suspend')
                 <td><span class="badge badge-warning">Suspended</span></td>
                 @endif
                </td>
@@ -169,7 +173,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer clearfix">
-          <a href="studentprofile/{{ Auth::guard('student')->user()->surname  }}" class="btn btn-sm btn-info float-left">View Profile</a>
+          <a href="{{ url('web/profile/'.Auth::guard('web')->user()->ref_no)  }}" class="btn btn-sm btn-info float-left">View Profile</a>
           {{-- <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a> --}}
         </div>
         <!-- /.card-footer -->
@@ -187,4 +191,4 @@
     
     <!-- /.content -->
   </div>
-  @include('dashboard.student.footer')
+  @include('dashboard.footer')

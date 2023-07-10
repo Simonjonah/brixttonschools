@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Classname;
+use App\Models\Studycenter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -627,6 +628,62 @@ class UserController extends Controller
         $view_profile = User::where('ref_no', $ref_no)->first();
         return view('dashboard.profile', compact('view_profile'));
     }
+
+    public function admisionletter(){
+
+        return view('dashboard.admisionletter');
+    }
+
+    public function registerteacher(){
+       $dsplay_studycenters = Studycenter::all();
+       $dsplay_classes = Classname::all();
+        return view('dashboard.registerteacher', compact('dsplay_studycenters', 'dsplay_classes'));
+    }
+
+    public function createteacher (Request $request){
+       
+        $request->validate([
+            'fname' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string'],
+            'middlename' => ['required', 'string'],
+            'centername' => ['required', 'string'],
+            'classname' => ['required', 'string'],
+            'password' => ['required', 'string'],
+            'images' => 'required|mimes:jpg,png,jpeg'
+        ]);
+//    dd($request->all());
+        if ($request->hasFile('images')){
+
+            $file = $request['images'];
+            $filename = 'SimonJonah-' . time() . '.' . $file->getClientOriginalExtension();
+            $path = $request->file('images')->storeAs('resourceimages', $filename);
+
+        }
+
+        $addteachers = new User();
+        $addteachers['images'] = $path;
+        $addteachers->surname = $request->surname;
+        $addteachers->centername = $request->centername;
+        $addteachers->fname = $request->fname;
+        $addteachers->middlename = $request->middlename;
+        $addteachers->email = $request->email;
+        $addteachers->phone = $request->phone;
+        $addteachers->role = 'teacher';
+        $addteachers->classname = $request->classname;
+        $addteachers->password = \Hash::make($request->password);
+        $addteachers->ref_no = substr(rand(0,time()),0, 9);
+
+        $addteachers->save();
+        if ($addteachers) {
+            return redirect()->route('web.home')->with('success', 'you have successfully registered');
+                
+            }else{
+                return redirect()->back()->with('error', 'you have fail to registered');
+        }
+    }
+   
 
     public function logout(){
         Auth::guard('web')->logout();

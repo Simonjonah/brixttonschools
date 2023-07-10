@@ -403,18 +403,23 @@ Route::prefix('admin')->name('admin.')->group(function() {
 
 //Route::post('/checkfirst', [UserController::class, 'checkfirst'])->name('checkfirst');
 
+Route::get('/registerteacher', [UserController::class, 'registerteacher'])->name('registerteacher');
+
+Route::post('/createteacher', [UserController::class, 'createteacher'])->name('createteacher');
 
 Route::prefix('web')->name('web.')->group(function() {
 
     Route::middleware(['guest:web'])->group(function() {
+        
         Route::post('/checkfirst', [UserController::class, 'checkfirst'])->name('checkfirst');
     });
     
     Route::middleware(['auth:web'])->group(function() {
         Route::get('/home', [UserController::class, 'home'])->name('home');
+        Route::get('/teacherhome', [UserController::class, 'teacherhome'])->name('teacherhome');
+        
         Route::get('/profile/{ref_no}', [UserController::class, 'profile'])->name('profile');
-        // Route::get('/classesdelete/{id}', [ClassnameController::class, 'classesdelete'])->name('classesdelete');
-        // Route::put('/updateclass/{id}', [ClassnameController::class, 'updateclass'])->name('updateclass');
+        Route::get('/admisionletter', [UserController::class, 'admisionletter'])->name('classesdelete');
         
         Route::get('/logout', [UserController::class, 'logout'])->name('logout'); 
         

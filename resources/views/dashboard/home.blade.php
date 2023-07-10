@@ -23,7 +23,11 @@
 
    @if (Auth::guard('web')->user()->status == null)
      @include('dashboard.firstregistration')
-   @else
+   @elseif (Auth::guard('web')->user()->status == 'suspend')
+    <h1>{{ Auth::guard('web')->user()->fname }}, You have been suspended</h1>
+    @elseif (Auth::guard('web')->user()->status == 'reject')
+    <h1>{{ Auth::guard('web')->user()->fname }}, You have been rejected</h1>
+    @else
       <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -141,7 +145,7 @@
               </thead>
               <tbody>
               <tr>
-                <td><a href="{{ url('profile/'.Auth::guard('web')->user()->id)  }}">{{ Auth::guard('web')->user()->ref_no  }}</a></td>
+                <td><a href="{{ url('web/profile/'.Auth::guard('web')->user()->ref_no)  }}">{{ Auth::guard('web')->user()->ref_no  }}</a></td>
                 <td>{{ Auth::guard('web')->user()->surname  }}</td>
                 <td>{{ Auth::guard('web')->user()->fname  }}</td>
                 <td>{{ Auth::guard('web')->user()->middlename  }}</td>
@@ -169,7 +173,7 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer clearfix">
-          <a href="webprofile/{{ Auth::guard('web')->user()->surname  }}" class="btn btn-sm btn-info float-left">View Profile</a>
+          <a href="{{ url('web/profile/'.Auth::guard('web')->user()->ref_no)  }}" class="btn btn-sm btn-info float-left">View Profile</a>
           {{-- <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a> --}}
         </div>
         <!-- /.card-footer -->

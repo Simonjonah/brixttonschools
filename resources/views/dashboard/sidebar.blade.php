@@ -55,51 +55,39 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Programs
+                Pay Fees {{ Auth::guard('web')->user()->classname }}
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">6</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{ route('web.programs') }}" class="nav-link"> --}}
+                <a href="{{ url('payment') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>All Programs</p>
+                  <p>Pioneer Term</p>
                 </a>
               </li>
               <li class="nav-item">
-                {{-- <a href="{{ route('web.certiprograms') }}" class="nav-link"> --}}
+                <a href="{{ url('payment') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Cert. Data Processing</p>
+                  <p>Pensulate Term</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                {{-- <a href="{{ route('web.dataprocessprograms') }}" class="nav-link"> --}}
+                <a href="{{ url('payment') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Processing </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.mainrepairsprograms') }}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Maint/Repairs </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.professionalpragrams') }}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profesionals </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.nidprograms') }}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>NID </p>
+                  <p>Premium Term</p>
                 </a>
               </li>
 
-              
+              <li class="nav-item">
+                <a href="{{ url('payment') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pay All Term</p>
+                </a>
+              </li>
+             
             </ul>
           </li>
           <li class="nav-item has-treeview">
@@ -112,7 +100,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{ route('web.paymenthistory') }}" class="nav-link"> --}}
+                <a href="{{ url('web.paymenthistory') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Payments History</p>
                 </a>
@@ -131,7 +119,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{ route('web.logout') }}" class="nav-link active"> --}}
+                <a href="{{ route('web.logout') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Logout</p>
                 </a>
@@ -142,6 +130,58 @@
          
         </ul>
       </nav>
+      @elseif (Auth::guard('web')->user()->status == 'reject')
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+         
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Logout
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('web.logout') }}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Logout</p>
+                </a>
+              </li>
+           
+            </ul>
+          </li>
+         
+        </ul>
+      </nav>
+        {{-- <h1>Dear {{ Auth::guard('web')->user()->fname }}, You have been rejected</h1> --}}
+      @elseif (Auth::guard('web')->user()->status == 'suspend')
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+         
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Logout
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('web.logout') }}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Logout</p>
+                </a>
+              </li>
+           
+            </ul>
+          </li>
+         
+        </ul>
+      </nav>
+      {{-- <h1>Dear {{ Auth::guard('web')->user()->fname }}, You have been suspended</h1> --}} 
       @else
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -157,7 +197,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{ route('home') }}" class="nav-link active"> --}}
+                <a href="{{ route('home') }}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard </p>
                 </a>
@@ -166,7 +206,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            {{-- <a href="webprofile/{{ Auth::guard('web')->user()->surname }}" class="nav-link"> --}}
+            <a href="{{ url('web/profile/'.Auth::guard('web')->user()->ref_no) }}" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>
                 Profile
@@ -178,51 +218,39 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Programs
+                Pay Fees {{ Auth::guard('web')->user()->classname }}
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">6</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{ route('web.programs') }}" class="nav-link"> --}}
+                <a href="{{ url('payment') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>All Programs</p>
+                  <p>Pioneer Term</p>
                 </a>
               </li>
               <li class="nav-item">
-                {{-- <a href="{{ route('web.certiprograms') }}" class="nav-link"> --}}
+                <a href="{{ url('payment') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Cert. Data Processing</p>
+                  <p>Pensulate Term</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                {{-- <a href="{{ route('web.dataprocessprograms') }}" class="nav-link"> --}}
+                <a href="{{ url('payment') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Processing </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.mainrepairsprograms') }}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Maint/Repairs </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.professionalpragrams') }}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profesionals </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.nidprograms') }}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>NID </p>
+                  <p>Premium Term</p>
                 </a>
               </li>
 
-              
+              <li class="nav-item">
+                <a href="{{ url('payment') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pay All Term</p>
+                </a>
+              </li>
+             
             </ul>
           </li>
           <li class="nav-item has-treeview">
@@ -235,74 +263,24 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{ route('web.paymenthistory') }}" class="nav-link"> --}}
+                <a href="{{ url('web.paymenthistory') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Payments History</p>
                 </a>
               </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.viewpublication') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Publication</p>
-                </a> --}}
-              </li>
-              
+            
             </ul>
           </li>
           
+          
           <li class="nav-header">ADMIMISSION</li>
           <li class="nav-item">
-            {{-- <a href="{{ route('web.admisionletter') }}" class="nav-link"> --}}
+            <a href="{{ url('web/admisionletter') }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>Admission Letter</p>
             </a>
           </li>
 
-          
-
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Register Courses 
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.webcoursereg') }}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register Courses</p>
-                </a>
-              </li>
-              
-            </ul>
-          </li>
-
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Your Courses 
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.yourcourse') }}" class="nav-link"> --}}
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Your Courses</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.viewpersonnel') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View All Personnel</p>
-                </a> --}}
-              </li>
-
-            </ul>
-          </li>
 
 
           <li class="nav-item has-treeview">
@@ -315,19 +293,11 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                {{-- <a href="{{ route('web.checkresultterminal') }}" class="nav-link"> --}}
+                <a href="{{ url('web/checkresultterminal') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Your Results</p>
                 </a>
               </li>
-
-
-              {{-- <li class="nav-item">
-                <a href="{{ route('web.checkresult') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Check Results</p>
-                </a>
-              </li> --}}
 
             </ul>
           </li>
@@ -335,25 +305,20 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                My Program 
+                My Teacher 
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <li class="nav-item">
-                  {{-- <a href="{{ route('web.myprogram') }}" class="nav-link"> --}}
+                  <a href="{{ url('web/myprogram') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>My Programs</p>
+                    <p>My Teacher</p>
                   </a>
                 </li>
               </li>
-              <li class="nav-item">
-                {{-- <a href="{{ route('web.contactpage') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Contact From Glimsource</p>
-                </a> --}}
-              </li>
+            
 
             </ul>
           </li>
