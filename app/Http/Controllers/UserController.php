@@ -684,6 +684,26 @@ class UserController extends Controller
         }
     }
    
+    public function printclasses(Request $request){
+        $request->validate([
+            'classname' => ['required', 'string'],
+            'centername' => ['required', 'string'],
+        ]);
+        if($getyour_classes = user::where('classname', $request->classname)
+        ->where('centername', $request->centername)
+        ->exists()) {
+            $getyour_classes = User::orderby('created_at', 'DESC')
+            ->where('centername', $request->centername)
+            ->where('classname', $request->classname)
+       
+            ->get(); 
+            }else{
+                return redirect()->back()->with('fail', 'There is no students in these class!');
+            }
+            return view('dashboard.admin.printregclass', compact('getyour_classes'));
+
+        }
+    
 
     public function logout(){
         Auth::guard('web')->logout();

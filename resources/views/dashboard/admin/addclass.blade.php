@@ -57,12 +57,12 @@
                   <div class="card-body">
                     
                     <div class="form-group">
-                      <label for="exampleInputEmail1">First Semester</label>
-                      <input type="text" name="name" class="form-control" @error('name')
+                      <label for="exampleInputEmail1">Class Name</label>
+                      <input type="text" name="classname" class="form-control" @error('classname')
                           
-                      @enderror value="{{ old('name') }}" id="exampleInputEmail1" placeholder="Name">
+                      @enderror value="{{ old('classname') }}" id="exampleInputEmail1" placeholder="Class Name">
                     </div>
-                    @error('name')
+                    @error('classname')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
 

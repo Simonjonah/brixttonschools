@@ -1,6 +1,6 @@
 
   <!-- /.navbar -->
-@include('dashboard.admin.header')
+  @include('dashboard.admin.header')
   <!-- Main Sidebar Container -->
   @include('dashboard.admin.sidebar')
 
@@ -59,7 +59,7 @@
                 @endif
                     @foreach ($view_clesses as $view_clesse)
                     <tr>
-                        <td>{{ $view_clesse->name }}</td>
+                        <td>{{ $view_clesse->classname }}</td>
                         
                         <th><a href="{{ url('admin/editclasses/'.$view_clesse->id) }}" class="btn btn-sm bg-teal">
                           <i class="fas fa-comments"></i>

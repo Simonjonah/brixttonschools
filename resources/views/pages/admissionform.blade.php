@@ -70,7 +70,7 @@
 								</div>
 
 								<div class="form-group">
-									<h5>Entrylevel</h5>
+									<h5>Term</h5>
 									<select name="entrylevel" class="form-control"  id="">
 										<option value="Pioneer Term">Pioneer Term</option>
 										<option value="Penultimate Term">Penultimate Term</option>
@@ -102,7 +102,7 @@
 							<h5>Entry Level</h5>
 							<select class="form-control" type="text" name="classname" required="">
 								@foreach ($add_class as $add_clas)
-									<option value="{{ $add_clas->name }}">{{ $add_clas->name }}</option>
+									<option value="{{ $add_clas->classname }}">{{ $add_clas->classname }}</option>
 								@endforeach
 							</select>
 							

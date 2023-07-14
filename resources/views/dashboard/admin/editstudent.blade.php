@@ -105,7 +105,7 @@
                       <h5>Entry Level</h5>
                       <select class="form-control" type="text" name="classname" required="">
                         @foreach ($add_class as $add_clas)
-                          <option value="{{ $add_clas->name }}">{{ $add_clas->name }}</option>
+                          <option value="{{ $add_clas->classname }}">{{ $add_clas->classname }}</option>
                         @endforeach
                       </select>
                       

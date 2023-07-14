@@ -58,11 +58,11 @@
                     
                     <div class="form-group">
                       <label for="exampleInputEmail1">First Semester</label>
-                      <input type="text" value="{{ $edit_clesses->name }}" name="name" class="form-control" @error('name')
+                      <input type="text" value="{{ $edit_clesses->classname }}" name="classname" class="form-control" @error('name')
                           
-                      @enderror value="{{ old('name') }}" id="exampleInputEmail1" placeholder="Name">
+                      @enderror value="{{ old('classname') }}" id="exampleInputEmail1" placeholder="Name">
                     </div>
-                    @error('name')
+                    @error('classname')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
 

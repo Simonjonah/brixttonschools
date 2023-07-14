@@ -13,7 +13,7 @@ use App\Http\Controllers\ClassnameController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\MainsliderController;
-
+use App\Http\Controllers\SubjectController;
 use App\Models\Team;
 use App\Models\Event;
 use App\Models\Blog;
@@ -134,6 +134,11 @@ Route::prefix('admin')->name('admin.')->group(function() {
     
     Route::middleware(['auth:admin'])->group(function() {
         
+        Route::post('printclasses', [UserController::class, 'printclasses'])->name('printclasses');
+        Route::get('viewsubject', [SubjectController::class, 'viewsubject'])->name('viewsubject');
+        Route::post('createsubject', [SubjectController::class, 'createsubject'])->name('createsubject');
+        Route::get('addsubject', [SubjectController::class, 'addsubject'])->name('addsubject');
+        Route::get('/classrooms/{name}', [ClassnameController::class, 'classrooms'])->name('classrooms');
         Route::get('/classesdelete/{id}', [ClassnameController::class, 'classesdelete'])->name('classesdelete');
         Route::put('/updateclass/{id}', [ClassnameController::class, 'updateclass'])->name('updateclass');
         Route::get('/editclasses/{id}', [ClassnameController::class, 'editclasses'])->name('editclasses');

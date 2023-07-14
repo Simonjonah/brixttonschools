@@ -6,8 +6,11 @@
            style="opacity: .8">
       <span class="brand-text font-weight-light"><br>BRIXTONN  SCHOOLS </span>
     </a>
-
-    <!-- Sidebar -->
+    
+      <?php
+        use App\Models\Classname;
+          $view_clesses = Classname::all();
+      ?>
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -326,47 +329,32 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Upload Courses
+                Classes Manage
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">6</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              
-              <li class="nav-item">
-                <a href="{{ route('admin.certindataprocescourse') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cert. Data Processing</p>
-                </a>
-              </li>
-              
-              <li class="nav-item">
-                <a href="{{ route('admin.viewcertindataprocescourse') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View Cert.Data Processing</p>
-                </a>
-              </li>
+            
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-plus-square"></i>
                   <p>
-                    Diploma in Data Pro.
+                    Classes
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
+                  @foreach ($view_clesses as $view_clesse)
                   <li class="nav-item">
-                    <a href="{{ route('admin.add1courses') }}" class="nav-link">
+                    <a href="{{ url('admin/classrooms/'.$view_clesse->classname) }}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Upload D1 Courses</p>
+                      <p>{{ $view_clesse->classname }}</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="{{ route('admin.viewd1courses') }}" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>View D1 Courses</p>
-                    </a>
-                  </li>
+                  @endforeach
+                  
+                 
                 </ul>
               </li>
               
@@ -533,9 +521,32 @@
                 </ul>
               </li>
             </ul>
+          </li>
 
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Subject
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.addsubject') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Subject</p>
+                </a>
+              </li>
 
+              <li class="nav-item">
+                <a href="{{ route('admin.viewsubject') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Subjects</p>
+                </a>
+              </li>
             
+            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
