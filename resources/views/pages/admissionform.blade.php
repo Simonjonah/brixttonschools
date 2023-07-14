@@ -81,9 +81,7 @@
 									<h5>State of Origin</h5>
 									<input class="form-control" type="text" name="state" value="" placeholder="State" required="">
 								</div>
-								
-								
-
+							
 						</div>
 					</div>
 					

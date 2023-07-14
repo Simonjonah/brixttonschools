@@ -651,9 +651,14 @@ class UserController extends Controller
             'centername' => ['required', 'string'],
             'classname' => ['required', 'string'],
             'password' => ['required', 'string'],
+            'gender' => ['required', 'string'],
+            'fatheraddress' => ['required', 'string'],
+            'section' => ['required', 'string'],
+            'entrylevel' => ['required', 'string'],
+            
             'images' => 'required|mimes:jpg,png,jpeg'
         ]);
-//    dd($request->all());
+
         if ($request->hasFile('images')){
 
             $file = $request['images'];
@@ -670,11 +675,16 @@ class UserController extends Controller
         $addteachers->middlename = $request->middlename;
         $addteachers->email = $request->email;
         $addteachers->phone = $request->phone;
+        $addteachers->section = $request->section;
+        $addteachers->gender = $request->gender;
+        $addteachers->fatheraddress = $request->fatheraddress;
+        
         $addteachers->role = 'teacher';
+        $addteachers->status = 'teacher';
+        $addteachers->entrylevel = $request->entrylevel;
         $addteachers->classname = $request->classname;
         $addteachers->password = \Hash::make($request->password);
         $addteachers->ref_no = substr(rand(0,time()),0, 9);
-
         $addteachers->save();
         if ($addteachers) {
             return redirect()->route('web.home')->with('success', 'you have successfully registered');
@@ -703,7 +713,29 @@ class UserController extends Controller
             return view('dashboard.admin.printregclass', compact('getyour_classes'));
 
         }
-    
+
+
+        public function pioneerterm(){
+            $view_terms = User::all();
+          
+            return view('dashboard.pioneerterm', compact('view_terms'));
+        }
+
+        public function penultimateterm(){
+            $view_terms = User::all();
+            return view('dashboard.penultimateterm', compact('view_terms'));
+        }
+
+        public function assignedteacher($centername){
+            $assign_teachers = User::where('centername', $centername)->first();
+            $view_teachers = User::where('centername', $centername)
+            ->where('role', 'teacher')->get();
+            
+            return view('dashboard.assignedteacher', compact('view_teachers', 'assign_teachers'));
+        }
+         
+       
+        
 
     public function logout(){
         Auth::guard('web')->logout();

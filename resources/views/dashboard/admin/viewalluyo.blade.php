@@ -115,7 +115,7 @@
                        <th><a href="{{ url('admin/rejectstudent/'.$viewalluyo_student->ref_no) }}" class="btn btn-sm bg-teal">
                         <i class="fas fa-user"></i>
                       </a></th>
-                      <th><a href="{{ url('admin/assignedteacher/'.$viewalluyo_student->ref_no) }}" class="btn btn-sm bg-teal">
+                      <th><a href="{{ url('admin/assignedteacher/'.$viewalluyo_student->centername) }}" class="btn btn-sm bg-teal">
                         <i class="fas fa-comments"></i>
                       </a></th><th><a href="{{ url('admin/suspendstudent/'.$viewalluyo_student->ref_no) }}" class="btn btn-sm bg-teal">
                         <i class="fas fa-comments"></i>
@@ -126,17 +126,11 @@
                       </a></th>
                       
                      
-                      {{-- <th><a href="{{ url('admin/studentit/'.$viewalluyo_student->ref_no) }}" class="btn btn-info"><i class="fas fa-user"></i> IT</a></th> --}}
                        <td><a href="{{ url('admin/deletestudent/'.$viewalluyo_student->ref_no) }}"
                         class='btn btn-danger'>
                          <i class="far fa-trash-alt"></i>
                      </a></td>
-                     {{-- <td>@if ($viewalluyo_student->student_identity == null)
-                      <span class="badge badge-danger">Not Send</span>
-                     @elseif($viewalluyo_student->student_identity == 'IT SEND')
-                     <span class="badge badge-info"> Send For I.T</span>
-                     
-                     @endif</td> --}}
+                    
                      <td>{{ $viewalluyo_student->created_at->format('D d, M Y, H:i')}}</td>
 
                       </tr>

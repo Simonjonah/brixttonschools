@@ -49,48 +49,50 @@
 								</div>
 								
 								<div class="form-group">
-									<h5>OtherNames</h5>
-									<input type="text" name="othername" value="{{ old('lname') }}" @error('lname')@enderror class="form-control" placeholder="Othernames" required="">
+									<h5>Middlenames</h5>
+									<input type="text" name="middlename" value="{{ old('middlename') }}" @error('middlename')@enderror class="form-control" placeholder="Middlename" required="">
+								</div>
+
+								<div class="form-group">
+									<h5>Surname</h5>
+									<input type="text" name="surname" value="{{ old('surname') }}" @error('surname')@enderror class="form-control" placeholder="Surname" required="">
 								</div>
 
 								<div class="form-group">
 									<h5>Class</h5>
-									<select class="form-control" type="text" name="class" value="" placeholder="Class" required="">
-										<option>Reception</option>
-										<option>Pre-School</option>
-										<option>KG 1</option>
-										<option>KG 2</option>
-										<option>Elementary 1</option>
-										<option>Elementary 2</option>
-										<option>Elementary 3</option>
-										<option>Elementary 4</option>
-										<option>Elementary 5</option>
+									<select class="form-control" type="text" name="classname" value="" placeholder="Class" required="">
+										@foreach ($display_class as $display_clas)
+											<option value="{{ $display_clas->classname }}">{{ $display_clas->classname }}</option>
+										@endforeach
+										
 									</select>
 									
 								</div>
 								
 								<div class="form-group">
-				                  <h5>Select Alms</h5>
-				                  <select class="form-control" name="alms" required="">
-				                    <option>Smart</option>
-				                    <option>Bright</option>
-				                    <option>Clever</option>
-				                    <option>Awesome</option>
-				                    <option>Radiant</option>
-				                    <option>Fast</option>
-				                    <option>Sharp</option>
-				                    <option>Brilliant</option>
+				                  <h5>Select Study Center</h5>
+				                  <select class="form-control" name="centername" required="">
+				                    @foreach ($display_centers as $display_center)
+											<option value="{{ $display_center->centername }}">{{ $display_center->centername }}</option>
+										@endforeach
 				                  </select>
 				                </div> 
 								<div class="form-group">
 									<h5>Gender</h5>
 									<select class="form-control" name="gender" required="">
-										<option>Male</option>
-										<option>Female</option>
+										<option value="Male">Male</option>
+										<option value="Female">Female</option>
 									</select>
 								</div>
 								
-								
+								<div class="form-group">
+									<h5>Term</h5>
+									<select name="entrylevel" class="form-control"  id="">
+										<option value="Pioneer Term">Pioneer Term</option>
+										<option value="Penultimate Term">Penultimate Term</option>
+										<option value="Premium Term">Premium Term</option>
+									</select>
+								</div>
                                
 						</div>
 					</div>
@@ -108,20 +110,35 @@
 								<input type="email" name="email" class="form-control" placeholder="Email" required="">
 							</div>
 							 
+							
+							<div class="form-group">
+								<h5>Address</h5>
+								<input type="text" name="fatheraddress" class="form-control" placeholder="Address" required="">
+							</div>
+								
+							<div class="form-group">
+								<h5>Section </h5>
+								<select required class="form-control" type="text" name="section">
+									<option value="Creche">Creche</option>
+									<option value="Pre-School">Pre-School</option>
+									<option value="Preparatory">Preparatory</option>
+									<option value="Nursery">Nursery</option>
+									<option value="Primary">Primary</option>
+									<option value="High School">High School</option>
+																		
+								</select>
+							</div>
+
+							<div class="form-group">
+								<h4>UPLOAD PASSPORD</h4>
+                				<input type="file" name="images" id="fileToUpload" required="">
+							</div>
+							
 							<div class="form-group">
 								<h5>Password</h5>
 								<input type="password" name="password" class="form-control" placeholder="Password" required="">
 							</div>
 
-							<div class="form-group">
-								<h5>Address</h5>
-								<input type="text" name="address" class="form-control" placeholder="Address" required="">
-							</div>
-								
-							<div class="form-group">
-								<h4>UPLOAD PASSPORD</h4>
-                				<input type="file" name="fileToUpload" id="fileToUpload" required="">
-							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-success">Submit</button>	
 							</div>

@@ -13,9 +13,13 @@
               <small class="btn btn-danger">Dear {{ Auth::guard('web')->user()->fname }} You have been rejected in the Brixtonn School you can do well to contact us through info@brixtonnschools.com.ng</small>
               @elseif (Auth::guard('web')->user()->status == 'suspend')
               <small class="btn btn-warning" style="color: #000">Dear {{ Auth::guard('web')->user()->surname }}, {{ Auth::guard('web')->user()->fname }} {{ Auth::guard('web')->user()->middlename }} You have been suspended in the Brixtonn School you can do well to contact us through info@brixtonnschools.com.ng</small>
-              @else
+              @elseif (Auth::guard('web')->user()->status == 'admitted')
               <small class="btn btn-success">Dear {{ Auth::guard('web')->user()->surname }}, {{ Auth::guard('web')->user()->fname }} {{ Auth::guard('web')->user()->middlename }} Congratulations! You been given admission in BRIXTONN SCHOOLS</small>
               Please Print your admission letter and pay school fees throgh this account
+              @else
+                
+              
+             
             @endif</h1>
           </div>
           <div class="col-sm-6">
@@ -66,8 +70,10 @@
                     @elseif (Auth::guard('web')->user()->status == 'suspend')
                     <a href="#" class="btn btn-warning btn-block"><b>Suspended</b></a>
 
-                    @else
+                    @elseif (Auth::guard('web')->user()->status == 'admitted')
                     <a href="#" class="btn btn-danger btn-block"><b>Reject</b></a>
+                    @else
+                    
                   @endif
                 {{-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> --}}
               </div>

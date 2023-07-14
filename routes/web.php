@@ -17,9 +17,11 @@ use App\Http\Controllers\SubjectController;
 use App\Models\Team;
 use App\Models\Event;
 use App\Models\Blog;
+use App\Models\Classname;
 use App\Models\Gallery;
 use App\Models\Facility;
 use App\Models\Mainslider;
+use App\Models\Studycenter;
 use App\Models\User;
 
 /*TeamController
@@ -95,8 +97,11 @@ Route::get('/facilities', function () {
 });
 
 Route::get('/teacherform', function () {
+    $display_class = Classname::all();
+    $display_centers = Studycenter::all();
 
-    return view('pages.teacherform');
+
+    return view('pages.teacherform', compact('display_class', 'display_centers'));
 });
 
 Route::get('/admission', function () {
@@ -133,7 +138,9 @@ Route::prefix('admin')->name('admin.')->group(function() {
     });
     
     Route::middleware(['auth:admin'])->group(function() {
+       
         
+        Route::get('assignedteacher/{centername}', [UserController::class, 'assignedteacher'])->name('assignedteacher');
         Route::post('printclasses', [UserController::class, 'printclasses'])->name('printclasses');
         Route::get('viewsubject', [SubjectController::class, 'viewsubject'])->name('viewsubject');
         Route::post('createsubject', [SubjectController::class, 'createsubject'])->name('createsubject');
@@ -421,7 +428,8 @@ Route::prefix('web')->name('web.')->group(function() {
     
     Route::middleware(['auth:web'])->group(function() {
         Route::get('/home', [UserController::class, 'home'])->name('home');
-        Route::get('/teacherhome', [UserController::class, 'teacherhome'])->name('teacherhome');
+        Route::get('/pioneerterm', [UserController::class, 'pioneerterm'])->name('pioneerterm');
+        Route::get('/penultimateterm', [UserController::class, 'penultimateterm'])->name('penultimateterm');
         
         Route::get('/profile/{ref_no}', [UserController::class, 'profile'])->name('profile');
         Route::get('/admisionletter', [UserController::class, 'admisionletter'])->name('classesdelete');
